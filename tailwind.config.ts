@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -54,18 +53,18 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				psktmt: {
-					50: '#eef3ef',
-					100: '#d3dfd6',
-					200: '#a8bfad',
-					300: '#7c9e85',
-					400: '#517e5d',
-					500: '#1E5631', // Primary PSK green - Matches PSK Group website
-					600: '#184528',
-					700: '#12341e',
-					800: '#0c2213',
-					900: '#061109',
+					50: '#e6f3ff',
+					100: '#b3dcff',
+					200: '#80c5ff', 
+					300: '#4dadff',
+					400: '#1A96FF',
+					500: '#0077CC',
+					600: '#005FAA',
+					700: '#004577',
+					800: '#002B4D',
+					900: '#001422',
 				},
-				success: '#2EC981', // Secondary green
+				success: '#2EC981',
 				neutral: {
 					100: '#F5F5F5',
 					200: '#E5E5E5',
@@ -73,11 +72,11 @@ export default {
 					400: '#A3A3A3',
 					500: '#737373',
 					600: '#525252',
-					700: '#4A4A4A', // Matches PSK Group website gray
+					700: '#4A4A4A',
 					800: '#262626',
 					900: '#171717',
 				},
-				pskaccent: '#E9EAE0', // Light beige accent from PSK Group
+				pskaccent: '#E9EAE0',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
