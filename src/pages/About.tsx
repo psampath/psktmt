@@ -1,4 +1,3 @@
-
 import PageLayout from '@/components/layout/PageLayout';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { Award, CheckCircle, Target, Users, Book } from 'lucide-react';
@@ -13,7 +12,7 @@ const About = () => {
     {
       icon: <Users size={48} className="text-psktmt-500" />,
       title: 'Customer Focus',
-      description: 'We prioritize understanding and meeting our customers' needs with responsive service and tailored solutions.'
+      description: "We prioritize understanding and meeting our customers' needs with responsive service and tailored solutions."
     },
     {
       icon: <Award size={48} className="text-psktmt-500" />,
