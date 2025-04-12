@@ -1,5 +1,4 @@
-
-import { CheckCircle, FileCheck, Factory, Truck, Flask, ShieldCheck, BarChart4 } from 'lucide-react';
+import { CheckCircle, FileCheck, Factory, Truck, Beaker, ShieldCheck, BarChart4 } from 'lucide-react';
 import PageLayout from '@/components/layout/PageLayout';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -22,7 +21,7 @@ const Manufacturing = () => {
       number: '03',
       title: 'Reheating',
       description: 'The billets are reheated in energy-efficient furnaces to achieve the optimal temperature for hot rolling.',
-      icon: <Flask size={48} className="text-psktmt-500" />
+      icon: <Beaker size={48} className="text-psktmt-500" />
     },
     {
       number: '04',
