@@ -1,4 +1,3 @@
-
 import { Award, Clipboard, Star, Truck, Building2, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageLayout from '@/components/layout/PageLayout';
@@ -7,19 +6,18 @@ import FeatureCard from '@/components/ui/FeatureCard';
 import SectionHeader from '@/components/ui/SectionHeader';
 import TestimonialCard from '@/components/ui/TestimonialCard';
 import { Link } from 'react-router-dom';
-import { Parallax, useParallax } from 'react-scroll-parallax';
+import { Parallax } from 'react-scroll-parallax';
+import { useRef } from 'react';
 
 const Index = () => {
-  const heroParallax = useParallax({
-    speed: -15,
-  });
+  const heroRef = useRef<HTMLDivElement>(null);
 
   return (
     <PageLayout>
       {/* Hero Section with Parallax */}
       <section className="bg-neutral-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-30">
-          <div ref={heroParallax.ref}>
+          <div ref={heroRef}>
             <img 
               src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80"
               alt="Steel construction" 

@@ -1,12 +1,11 @@
-
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Search } from 'lucide-react';
 import PageLayout from '@/components/layout/PageLayout';
 import SectionHeader from '@/components/ui/SectionHeader';
 import ProductCard from '@/components/ui/ProductCard';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Parallax, useParallax } from 'react-scroll-parallax';
+import { Parallax } from 'react-scroll-parallax';
 
 // Mock product data
 const productData = [
@@ -63,10 +62,7 @@ const productData = [
 const Products = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeFilter, setActiveFilter] = useState('all');
-  
-  const heroParallax = useParallax({
-    speed: -15,
-  });
+  const heroRef = useRef<HTMLDivElement>(null);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -90,7 +86,7 @@ const Products = () => {
       {/* Hero Section with Parallax */}
       <section className="bg-neutral-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-30">
-          <div ref={heroParallax.ref}>
+          <div ref={heroRef}>
             <img 
               src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80" 
               alt="Steel construction" 
