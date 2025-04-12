@@ -54,16 +54,16 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				psktmt: {
-					50: '#eef6f2',
-					100: '#d3e9de',
-					200: '#a8d2bd',
-					300: '#7cbc9c',
-					400: '#51a57a',
-					500: '#0D5F3A', // Primary green
-					600: '#0a4b2e',
-					700: '#083823',
-					800: '#052417',
-					900: '#03120c',
+					50: '#eef3ef',
+					100: '#d3dfd6',
+					200: '#a8bfad',
+					300: '#7c9e85',
+					400: '#517e5d',
+					500: '#1E5631', // Primary PSK green - Matches PSK Group website
+					600: '#184528',
+					700: '#12341e',
+					800: '#0c2213',
+					900: '#061109',
 				},
 				success: '#2EC981', // Secondary green
 				neutral: {
@@ -73,10 +73,11 @@ export default {
 					400: '#A3A3A3',
 					500: '#737373',
 					600: '#525252',
-					700: '#404040',
+					700: '#4A4A4A', // Matches PSK Group website gray
 					800: '#262626',
 					900: '#171717',
 				},
+				pskaccent: '#E9EAE0', // Light beige accent from PSK Group
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,8 +85,8 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				sans: ['Inter', 'sans-serif'],
-				heading: ['Poppins', 'sans-serif'],
+				sans: ['Montserrat', 'sans-serif'],
+				heading: ['Montserrat', 'sans-serif'],
 			},
 			boxShadow: {
 				'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
@@ -108,12 +109,17 @@ export default {
 					'0%': { transform: 'translateY(10px)', opacity: '0' },
 					'100%': { transform: 'translateY(0)', opacity: '1' },
 				},
+				'parallax-shift': {
+					'0%': { transform: 'translateY(0)' },
+					'100%': { transform: 'translateY(-5px)' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.5s ease-out forwards',
 				'slide-in': 'slide-in 0.5s ease-out forwards',
+				'parallax-shift': 'parallax-shift 0.5s ease-out forwards',
 			}
 		}
 	},

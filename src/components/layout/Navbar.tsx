@@ -35,7 +35,7 @@ const Navbar = () => {
             <Link
               key={link.name}
               to={link.path}
-              className="text-neutral-800 hover:text-psktmt-500 transition-colors font-medium"
+              className="text-neutral-700 hover:text-psktmt-500 transition-colors font-medium"
             >
               {link.name}
             </Link>
@@ -43,7 +43,9 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:block">
-          <Button className="bg-psktmt-500 hover:bg-psktmt-600">Get a Quote</Button>
+          <Link to="/contact">
+            <Button className="bg-psktmt-500 hover:bg-psktmt-600">Get a Quote</Button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -63,15 +65,17 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className="text-neutral-800 hover:text-psktmt-500 transition-colors py-2 font-medium"
+                className="text-neutral-700 hover:text-psktmt-500 transition-colors py-2 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.name}
               </Link>
             ))}
-            <Button className="bg-psktmt-500 hover:bg-psktmt-600 mt-2">
-              Get a Quote
-            </Button>
+            <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
+              <Button className="bg-psktmt-500 hover:bg-psktmt-600 mt-2 w-full">
+                Get a Quote
+              </Button>
+            </Link>
           </div>
         </div>
       )}

@@ -6,6 +6,7 @@ import SectionHeader from '@/components/ui/SectionHeader';
 import ProductCard from '@/components/ui/ProductCard';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Parallax, useParallax } from 'react-scroll-parallax';
 
 // Mock product data
 const productData = [
@@ -62,6 +63,10 @@ const productData = [
 const Products = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeFilter, setActiveFilter] = useState('all');
+  
+  const heroParallax = useParallax({
+    speed: -15,
+  });
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -82,17 +87,29 @@ const Products = () => {
 
   return (
     <PageLayout>
-      {/* Hero Section */}
-      <section className="bg-neutral-900 text-white">
-        <div className="container-custom py-20 md:py-24">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
-              Our <span className="text-gradient-primary">Products</span>
-            </h1>
-            <p className="text-xl text-neutral-200 animate-slide-in">
-              Discover our range of high-quality TMT bars designed for various construction needs
-            </p>
+      {/* Hero Section with Parallax */}
+      <section className="bg-neutral-900 text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
+          <div ref={heroParallax.ref}>
+            <img 
+              src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80" 
+              alt="Steel construction" 
+              className="w-full h-full object-cover"
+            />
           </div>
+        </div>
+        <div className="container-custom py-20 md:py-24 relative z-10">
+          <Parallax translateY={[0, -15]} opacity={[1, 0.8]}>
+            <div className="max-w-3xl">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                Our <span className="text-gradient-primary">Products</span>
+              </h1>
+              <p className="text-xl text-neutral-200">
+                Discover our range of high-quality TMT bars designed for various construction needs.
+                <span className="block mt-3 text-sm font-semibold">Prices updated daily</span>
+              </p>
+            </div>
+          </Parallax>
         </div>
       </section>
 
@@ -164,11 +181,18 @@ const Products = () => {
             </div>
           </div>
 
-          {/* Product Grid */}
+          {/* Product Grid with Parallax */}
           {filteredProducts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredProducts.map((product) => (
-                <ProductCard key={product.id} {...product} />
+              {filteredProducts.map((product, index) => (
+                <Parallax 
+                  key={product.id}
+                  translateY={[20, -20]} 
+                  startScroll={200 + (index * 50)}
+                  className="parallax-item"
+                >
+                  <ProductCard {...product} />
+                </Parallax>
               ))}
             </div>
           ) : (
@@ -189,7 +213,7 @@ const Products = () => {
       </section>
 
       {/* Product Information Section */}
-      <section className="bg-neutral-100">
+      <section className="bg-pskaccent">
         <div className="container-custom">
           <SectionHeader 
             title="Understanding TMT Bars" 
@@ -198,60 +222,78 @@ const Products = () => {
           
           <div className="bg-white p-8 rounded-lg shadow-card">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <div>
-                <h3 className="text-2xl font-bold mb-4">What are TMT Bars?</h3>
-                <p className="text-neutral-700 mb-4">
-                  Thermo-Mechanically Treated (TMT) bars are high-strength reinforcement bars with excellent weldability, ductility, and bend properties. They are manufactured through a special heat treatment process that creates a strong, tough outer layer while maintaining a softer, more ductile core.
-                </p>
-                <p className="text-neutral-700 mb-4">
-                  This unique combination of properties makes TMT bars ideal for construction in seismic zones and structures requiring high tensile strength. PSKTMT bars are manufactured using the latest technology to ensure consistent quality and performance.
-                </p>
-                <h3 className="text-2xl font-bold mb-4">How to Choose the Right TMT Bar</h3>
-                <p className="text-neutral-700">
-                  Selecting the appropriate TMT bar depends on your specific construction requirements. Consider factors such as the type of structure, load-bearing needs, environmental conditions, and budget constraints. Our team can help you determine the most suitable TMT grade for your project.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold mb-4">Benefits of PSKTMT Bars</h3>
-                <ul className="space-y-3 text-neutral-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-psktmt-500 font-bold">•</span>
-                    <span>Superior tensile strength for enhanced load-bearing capacity</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-psktmt-500 font-bold">•</span>
-                    <span>Excellent ductility for better performance during earthquakes</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-psktmt-500 font-bold">•</span>
-                    <span>High bendability without cracking or breaking</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-psktmt-500 font-bold">•</span>
-                    <span>Better weldability for efficient construction</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-psktmt-500 font-bold">•</span>
-                    <span>Uniform properties throughout the cross-section</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-psktmt-500 font-bold">•</span>
-                    <span>Corrosion resistance for longer structural life</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-psktmt-500 font-bold">•</span>
-                    <span>Cost-effective due to optimized material usage</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-psktmt-500 font-bold">•</span>
-                    <span>Compliance with BIS and international standards</span>
-                  </li>
-                </ul>
-              </div>
+              <Parallax translateY={[10, -10]} startScroll={400}>
+                <div>
+                  <h3 className="text-2xl font-bold mb-4">What are TMT Bars?</h3>
+                  <p className="text-neutral-700 mb-4">
+                    Thermo-Mechanically Treated (TMT) bars are high-strength reinforcement bars with excellent weldability, ductility, and bend properties. They are manufactured through a special heat treatment process that creates a strong, tough outer layer while maintaining a softer, more ductile core.
+                  </p>
+                  <p className="text-neutral-700 mb-4">
+                    This unique combination of properties makes TMT bars ideal for construction in seismic zones and structures requiring high tensile strength. PSKTMT bars are manufactured using the latest technology to ensure consistent quality and performance.
+                  </p>
+                  <h3 className="text-2xl font-bold mb-4">How to Choose the Right TMT Bar</h3>
+                  <p className="text-neutral-700">
+                    Selecting the appropriate TMT bar depends on your specific construction requirements. Consider factors such as the type of structure, load-bearing needs, environmental conditions, and budget constraints. Our team can help you determine the most suitable TMT grade for your project.
+                  </p>
+                </div>
+              </Parallax>
+              
+              <Parallax translateY={[20, -15]} startScroll={450}>
+                <div>
+                  <h3 className="text-2xl font-bold mb-4">Benefits of PSKTMT Bars</h3>
+                  <ul className="space-y-3 text-neutral-700">
+                    <li className="flex items-start gap-2">
+                      <span className="text-psktmt-500 font-bold">•</span>
+                      <span>Superior tensile strength for enhanced load-bearing capacity</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-psktmt-500 font-bold">•</span>
+                      <span>Excellent ductility for better performance during earthquakes</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-psktmt-500 font-bold">•</span>
+                      <span>High bendability without cracking or breaking</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-psktmt-500 font-bold">•</span>
+                      <span>Better weldability for efficient construction</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-psktmt-500 font-bold">•</span>
+                      <span>Uniform properties throughout the cross-section</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-psktmt-500 font-bold">•</span>
+                      <span>Corrosion resistance for longer structural life</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-psktmt-500 font-bold">•</span>
+                      <span>Cost-effective due to optimized material usage</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-psktmt-500 font-bold">•</span>
+                      <span>Compliance with BIS and international standards</span>
+                    </li>
+                  </ul>
+                </div>
+              </Parallax>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Compare Products Modal (placeholder - would be implemented with state) */}
+      <div className="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="bg-white rounded-lg p-6 w-full max-w-4xl">
+          <h3 className="text-2xl font-bold mb-4">Compare Products</h3>
+          <div className="grid grid-cols-3 gap-4">
+            {/* Product comparison would go here */}
+          </div>
+          <div className="flex justify-end mt-6">
+            <Button>Close</Button>
+          </div>
+        </div>
+      </div>
 
       {/* CTA Section */}
       <section className="bg-gradient-primary text-white">
@@ -260,7 +302,7 @@ const Products = () => {
           <p className="text-xl mb-8 max-w-3xl mx-auto">
             Our technical team is available to guide you through our product range and help you find the perfect TMT bars for your specific construction needs.
           </p>
-          <Button variant="secondary" className="px-8 py-3 text-lg bg-white text-psktmt-500 hover:bg-neutral-100">
+          <Button variant="secondary" className="px-8 py-6 text-lg bg-white text-psktmt-500 hover:bg-neutral-100">
             Request Expert Advice
           </Button>
         </div>

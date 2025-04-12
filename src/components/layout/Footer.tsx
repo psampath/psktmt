@@ -8,7 +8,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-neutral-900 text-white pt-16 pb-8">
+    <footer className="bg-neutral-700 text-white pt-16 pb-8">
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
@@ -105,7 +105,7 @@ const Footer = () => {
               <Input
                 type="email"
                 placeholder="Your Email"
-                className="bg-neutral-800 border-neutral-700 text-white"
+                className="bg-neutral-600 border-neutral-500 text-white"
               />
               <Button className="bg-psktmt-500 hover:bg-psktmt-600">
                 Subscribe
@@ -114,9 +114,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-neutral-800 pt-8">
+        <div className="border-t border-neutral-600 pt-8">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between text-neutral-400">
-            <p>© {currentYear} PSKTMT. All rights reserved.</p>
+            <p>© {currentYear} PSKTMT - A PSK Group Venture. All rights reserved.</p>
             <div className="flex gap-6">
               <Link to="/privacy" className="hover:text-psktmt-500 transition-colors">
                 Privacy Policy
