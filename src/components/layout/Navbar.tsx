@@ -23,10 +23,11 @@ const Navbar = () => {
     <header className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
       <nav className="container-custom flex items-center justify-between h-20">
         <Link to="/" className="flex items-center gap-2">
-          <div className="bg-psktmt-500 text-white font-bold text-xl p-2 rounded">
-            PSK
-          </div>
-          <span className="font-heading font-bold text-xl hidden sm:block">PSKTMT</span>
+          <img 
+            src="https://thepskgroup.com/wp-content/uploads/2023/09/logo.png" 
+            alt="PSK Group Logo" 
+            className="h-12"
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -44,7 +45,7 @@ const Navbar = () => {
 
         <div className="hidden md:block">
           <Link to="/contact">
-            <Button className="bg-psktmt-500 hover:bg-psktmt-600">Get a Quote</Button>
+            <Button className="bg-psktmt-500 hover:bg-psktmt-600 text-white">Get a Quote</Button>
           </Link>
         </div>
 
@@ -72,7 +73,7 @@ const Navbar = () => {
               </Link>
             ))}
             <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
-              <Button className="bg-psktmt-500 hover:bg-psktmt-600 mt-2 w-full">
+              <Button className="bg-psktmt-500 hover:bg-psktmt-600 mt-2 w-full text-white">
                 Get a Quote
               </Button>
             </Link>
