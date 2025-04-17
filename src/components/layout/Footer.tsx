@@ -14,9 +14,11 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <div className="flex items-center gap-2 mb-6">
-              <div className="bg-psktmt-500 text-white font-bold text-xl p-2 rounded">
-                PSK
-              </div>
+              <img 
+                src="https://thepskgroup.com/wp-content/uploads/2022/09/PSK-Group-Favicon-e1722336026629-300x138.png" 
+                alt="PSK Group Logo" 
+                className="h-8"
+              />
               <span className="font-heading font-bold text-xl">PSKTMT</span>
             </div>
             <p className="text-neutral-300 mb-6">
@@ -77,7 +79,8 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="text-psktmt-500 shrink-0 mt-1" size={18} />
                 <span className="text-neutral-300">
-                  123 Steel Complex, Industrial Area, Mumbai, Maharashtra, India - 400001
+                2nd Floor, Bizness Square, Jubilee Enclave,
+                HITEC City, Hyderabad, Telangana 500081
                 </span>
               </li>
               <li className="flex items-center gap-3">

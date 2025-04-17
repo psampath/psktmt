@@ -85,8 +85,8 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold text-lg mb-1">Our Office</h3>
                       <p className="text-neutral-600">
-                        123 Steel Complex, Industrial Area,<br />
-                        Mumbai, Maharashtra, India - 400001
+                        2nd Floor, Bizness Square, Jubilee Enclave,<br />
+                        HITEC City, Hyderabad, Telangana 500081
                       </p>
                     </div>
                   </div>

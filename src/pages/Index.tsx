@@ -45,7 +45,7 @@ const Index = () => {
                   </Button>
                 </Link>
                 <Link to="/contact">
-                  <Button variant="outline" className="border-white text-white hover:bg-white hover:text-neutral-900 px-8 py-6 text-lg">
+                  <Button variant="outline" className="border-white text-black hover:bg-white hover:text-[#003366] px-8 py-6 text-lg">
                     Get a Quote
                   </Button>
                 </Link>

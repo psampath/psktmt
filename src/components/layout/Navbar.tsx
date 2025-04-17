@@ -14,7 +14,7 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
-    { name: 'Products', path: '/products' },
+    { name: 'Price List', path: '/products' },
     { name: 'Manufacturing', path: '/manufacturing' },
     { name: 'Contact', path: '/contact' },
   ];
@@ -22,9 +22,13 @@ const Navbar = () => {
   return (
     <header className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
       <nav className="container-custom flex items-center justify-between h-20">
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-4">
+          <span className="flex items-center">
+            <span className="text-[#003366] text-4xl font-bold">PSKTMT</span>
+            <span className="text-[#003366] text-lg ml-2 font-bold">by</span>
+          </span>
           <img 
-            src="https://thepskgroup.com/wp-content/uploads/2023/09/logo.png" 
+            src="https://thepskgroup.com/wp-content/uploads/2022/09/PSK-Group-Favicon-e1722336026629-300x138.png" 
             alt="PSK Group Logo" 
             className="h-12"
           />
@@ -36,7 +40,7 @@ const Navbar = () => {
             <Link
               key={link.name}
               to={link.path}
-              className="text-neutral-700 hover:text-psktmt-500 transition-colors font-medium"
+              className="text-neutral-700 hover:text-[#003366] transition-colors font-medium"
             >
               {link.name}
             </Link>
@@ -45,7 +49,7 @@ const Navbar = () => {
 
         <div className="hidden md:block">
           <Link to="/contact">
-            <Button className="bg-psktmt-500 hover:bg-psktmt-600 text-white">Get a Quote</Button>
+            <Button className="bg-[#003366] hover:bg-[#002244] text-white">Get a Quote</Button>
           </Link>
         </div>
 
@@ -66,14 +70,14 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className="text-neutral-700 hover:text-psktmt-500 transition-colors py-2 font-medium"
+                className="text-neutral-700 hover:text-[#003366] transition-colors py-2 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.name}
               </Link>
             ))}
             <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
-              <Button className="bg-psktmt-500 hover:bg-psktmt-600 mt-2 w-full text-white">
+              <Button className="bg-[#003366] hover:bg-[#002244] mt-2 w-full text-white">
                 Get a Quote
               </Button>
             </Link>
