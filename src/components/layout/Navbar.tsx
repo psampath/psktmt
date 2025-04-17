@@ -22,11 +22,7 @@ const Navbar = () => {
   return (
     <header className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
       <nav className="container-custom flex items-center justify-between h-20">
-        <Link to="/" className="flex items-center gap-4">
-          <span className="flex items-center">
-            <span className="text-[#003366] text-4xl font-bold">PSKTMT</span>
-            <span className="text-[#003366] text-lg ml-2 font-bold">by</span>
-          </span>
+        <Link to="/" className="flex items-center gap-2">
           <img 
             src="https://thepskgroup.com/wp-content/uploads/2022/09/PSK-Group-Favicon-e1722336026629-300x138.png" 
             alt="PSK Group Logo" 
@@ -35,19 +31,19 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               to={link.path}
-              className="text-neutral-700 hover:text-[#003366] transition-colors font-medium"
+              className="text-neutral-700 hover:text-[#003366] transition-colors font-medium text-base whitespace-nowrap"
             >
               {link.name}
             </Link>
           ))}
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Link to="/contact">
             <Button className="bg-[#003366] hover:bg-[#002244] text-white">Get a Quote</Button>
           </Link>
@@ -56,7 +52,8 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMenu}
-          className="md:hidden text-neutral-900 focus:outline-none"
+          className="lg:hidden text-neutral-900 focus:outline-none"
+          aria-label="Toggle menu"
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -64,7 +61,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white py-4 shadow-lg animate-fade-in">
+        <div className="lg:hidden bg-white py-4 shadow-lg animate-fade-in">
           <div className="container-custom flex flex-col gap-4">
             {navLinks.map((link) => (
               <Link
