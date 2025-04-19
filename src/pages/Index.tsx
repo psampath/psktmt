@@ -163,81 +163,7 @@ const Index = () => {
       </section>
 
       {/* Product Teaser */}
-      <section className="bg-neutral-100">
-        <div className="container-custom">
-          <SectionHeader 
-            title="Our Featured Products" 
-            subtitle="Discover our premium range of TMT bars for various construction needs"
-          />
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Parallax translateY={[10, -5]} startScroll={400} className="parallax-item">
-              <div className="bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300">
-                <div className="h-48 overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace?auto=format&fit=crop&q=80" 
-                    alt="PSKTMT Fe 500" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2">PSKTMT Fe 500</h3>
-                  <p className="text-neutral-600 mb-4">High-quality TMT bars with superior tensile strength for general construction purposes.</p>
-                  <Link to="/products/fe-500">
-                    <Button className="w-full bg-psktmt-500 hover:bg-psktmt-600">View Details</Button>
-                  </Link>
-                </div>
-              </div>
-            </Parallax>
-            
-            <Parallax translateY={[15, -7]} startScroll={450} className="parallax-item">
-              <div className="bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300">
-                <div className="h-48 overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1460574283810-2aab119d8511?auto=format&fit=crop&q=80" 
-                    alt="PSKTMT Fe 550D" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2">PSKTMT Fe 550D</h3>
-                  <p className="text-neutral-600 mb-4">Super ductile high-strength TMT bars for critical infrastructure and high-rise buildings.</p>
-                  <Link to="/products/fe-550d">
-                    <Button className="w-full bg-psktmt-500 hover:bg-psktmt-600">View Details</Button>
-                  </Link>
-                </div>
-              </div>
-            </Parallax>
-            
-            <Parallax translateY={[20, -10]} startScroll={500} className="parallax-item">
-              <div className="bg-white rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300">
-                <div className="h-48 overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1486718448742-163732cd1544?auto=format&fit=crop&q=80" 
-                    alt="PSKTMT CRS Fe 500" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2">PSKTMT CRS Fe 500</h3>
-                  <p className="text-neutral-600 mb-4">Corrosion-resistant TMT bars specifically designed for coastal and high-humidity environments.</p>
-                  <Link to="/products/crs-fe-500">
-                    <Button className="w-full bg-psktmt-500 hover:bg-psktmt-600">View Details</Button>
-                  </Link>
-                </div>
-              </div>
-            </Parallax>
-          </div>
-          
-          <div className="text-center mt-12">
-            <Link to="/products">
-              <Button className="bg-psktmt-500 hover:bg-psktmt-600 px-8 py-6 text-lg">
-                See All Products
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+
 
       {/* CTA Section with Parallax Background */}
       <section className="relative overflow-hidden py-24">
@@ -254,7 +180,7 @@ const Index = () => {
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/products">
               <Button variant="secondary" className="px-8 py-6 text-lg bg-white text-psktmt-500 hover:bg-neutral-100">
-                View Products
+                View Pricing
               </Button>
             </Link>
             <Link to="/contact">
