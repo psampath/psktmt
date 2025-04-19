@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+// Remove the import that's causing the error
+// import PskTmtLogo from '@/assets/images/psk-tmt-logo.png';
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -24,9 +27,9 @@ const Navbar = () => {
       <nav className="container-custom flex items-center justify-between h-20">
         <Link to="/" className="flex items-center gap-2">
           <img 
-            src="https://thepskgroup.com/wp-content/uploads/2022/09/PSK-Group-Favicon-e1722336026629-300x138.png" 
-            alt="PSK Group Logo" 
-            className="h-12"
+            src="/images/psk-tmt-logo.png" 
+            alt="PSK TMT Logo" 
+            className="h-16"
           />
         </Link>
 

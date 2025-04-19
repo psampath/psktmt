@@ -41,7 +41,7 @@ const Index = () => {
               <div className="flex flex-wrap gap-4">
                 <Link to="/products">
                   <Button className="bg-psktmt-500 hover:bg-psktmt-600 px-8 py-6 text-lg">
-                    Explore Products
+                    Explore Pricing
                   </Button>
                 </Link>
                 <Link to="/contact">
