@@ -18,16 +18,13 @@ const Products = () => {
   const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' } | null>(null);
   
   const priceListData = [
-    { id: 1, size: '8 mm', price: '₹75' },
-    { id: 2, size: '10 mm', price: '₹78' },
-    { id: 3, size: '12 mm', price: '₹80' },
-    { id: 4, size: '16 mm', price: '₹82' },
-    { id: 5, size: '20 mm', price: '₹84' },
-    { id: 6, size: '25 mm', price: '₹86' },
-    { id: 7, size: '28 mm', price: '₹88' },
-    { id: 8, size: '32 mm', price: '₹90' },
-    { id: 9, size: '36 mm', price: '₹92' },
-    { id: 10, size: '40 mm', price: '₹95' },
+    { id: 1, size: '8 mm', price: '₹383/-' },
+    { id: 2, size: '10 mm', price: '₹594/-' },
+    { id: 3, size: '12 mm', price: '₹837/-' },
+    { id: 4, size: '16 mm', price: '₹1497/-' },
+    { id: 5, size: '20 mm', price: '₹2340/-' },
+    { id: 6, size: '25 mm', price: '₹3656/-' },
+    { id: 8, size: '32 mm', price: '₹6132/-' },
   ];
 
   const sortedData = [...priceListData];
@@ -83,12 +80,23 @@ const Products = () => {
         <div className="container-custom py-20 md:py-24 relative z-10">
           <Parallax translateY={[0, -15]} opacity={[1, 0.8]}>
             <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: "#003366" }}>
-                PSKTMT <span className="text-gradient-primary">Price List</span>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              <span
+                  style={{
+                    color: 'white',
+                    backgroundColor: 'rgba(0,51,102,0.80)',
+                    padding: '1px 4px 2px 1px',
+                    borderRadius: '16px',
+                    boxShadow: '0 1px 8px rgba(0,0,0,0.10)'
+                  }}
+                >
+                  PSKTMT 
+                  </span>{' '}
+                <span>Price List</span>
               </h1>
               <p className="text-xl text-neutral-200">
                 Current prices for our high-quality TMT bars.
-                <span className="block mt-3 text-sm font-semibold">Prices updated on April 17, 2025</span>
+                <span className="block mt-3 text-sm font-semibold">Prices updated on April 23, 2025</span>
               </p>
             </div>
           </Parallax>
@@ -118,7 +126,7 @@ const Products = () => {
                     className="cursor-pointer hover:bg-[#e5eff8] transition-colors"
                   >
                     <div className="flex items-center" style={{ color: "#003366" }}>
-                      Size (Diameter) {getSortIcon('size')}
+                      TMT BAR SIZE {getSortIcon('size')}
                     </div>
                   </TableHead>
                   <TableHead 
@@ -126,7 +134,7 @@ const Products = () => {
                     className="cursor-pointer hover:bg-[#e5eff8] transition-colors"
                   >
                     <div className="flex items-center" style={{ color: "#003366" }}>
-                      Price per Kg {getSortIcon('price')}
+                      RCP PER PIECE {getSortIcon('price')}
                     </div>
                   </TableHead>
                 </TableRow>
@@ -134,7 +142,7 @@ const Products = () => {
               <TableBody>
                 {sortedData.map((item) => (
                   <TableRow key={item.id} className="hover:bg-[#f8fafc]">
-                    <TableCell className="font-medium">TMT600+SD {item.size}</TableCell>
+                    <TableCell className="font-medium">{item.size}</TableCell>
                     <TableCell className="text-[#003366] font-semibold">{item.price}</TableCell>
                   </TableRow>
                 ))}

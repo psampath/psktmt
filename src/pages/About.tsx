@@ -157,6 +157,7 @@ const About = () => {
         </div>
       </section>
 
+      {/* Leadership Team section hidden for now
       <section className="bg-neutral-100">
         <div className="container-custom">
           <SectionHeader 
@@ -184,6 +185,7 @@ const About = () => {
           </div>
         </div>
       </section>
+      */}
     </PageLayout>
   );
 };

@@ -43,24 +43,24 @@ const Index = () => {
         <div className="container-custom py-20 md:py-32 relative z-10">
           <div className="max-w-3xl">
             <Parallax translateY={[0, -15]} opacity={[1, 0.8]}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style={{ lineHeight: '1.2' }}>
                 <span
                   style={{
                     color: 'white',
                     backgroundColor: 'rgba(0,51,102,0.80)',
-                    padding: '4px 16px',
-                    borderRadius: '8px',
+                    padding: '1px 4px 2px 1px',
+                    borderRadius: '16px',
                     boxShadow: '0 1px 8px rgba(0,0,0,0.10)'
                   }}
                 >
-                  PSKTMT:
+                  PSKTMT
                 </span>{' '}
                 Premium TMT Steel by PSK Group
               </h1>
             </Parallax>
             <Parallax translateY={[0, -10]} opacity={[1, 0.8]} startScroll={100}>
               <p className="text-xl text-neutral-200 mb-8 shadow-text bg-black/30 rounded p-2 inline-block">
-                Strength Built on Trust: Building Tomorrow's Foundations with Quality Steel Solutions
+                <b>Strength Built on Trust: Building Tomorrow's Foundations with Quality Steel Solutions</b>
               </p>
             </Parallax>
             <Parallax translateY={[0, -5]} startScroll={200}>

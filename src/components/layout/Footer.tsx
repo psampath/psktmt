@@ -18,7 +18,15 @@ const Footer = () => {
                 alt="PSK Group Logo" 
                 className="h-8"
               />
-              <span className="font-heading font-bold text-xl">PSKTMT</span>
+              <span
+  style={{
+    color: 'white',
+    backgroundColor: 'rgba(0,51,102,0.80)',
+    padding: '1px 1px 1px 1px',
+    borderRadius: '4px',
+    boxShadow: '0 1px 8px rgba(0,0,0,0.10)'
+  }}
+>PSKTMT</span>
             </div>
             <p className="text-neutral-300 mb-6">
               Premium TMT Bars for a Stronger Future. Building Tomorrow's Foundations with Quality Steel.
