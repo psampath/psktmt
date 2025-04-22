@@ -8,7 +8,6 @@ import TestimonialCard from '@/components/ui/TestimonialCard';
 import { Link } from 'react-router-dom';
 import { Parallax } from 'react-scroll-parallax';
 import { useRef } from 'react';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -20,8 +19,8 @@ const Index = () => {
         <div className="absolute inset-0 opacity-30">
           <div ref={heroRef}>
             <img 
-              src="https://images.unsplash.com/photo-1487887235947-a955ef187fcc?auto=format&fit=crop&q=80"
-              alt="Steel manufacturing process" 
+              src="/lovable-uploads/edacb921-d3d0-40b1-95f5-0d7bc9e82f18.png"
+              alt="Steel manufacturing process with worker and molten steel" 
               className="w-full h-full object-cover"
             />
           </div>
@@ -30,7 +29,7 @@ const Index = () => {
           <div className="max-w-3xl">
             <Parallax translateY={[0, -15]} opacity={[1, 0.8]}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                <span className="text-gradient-primary">PSKTMT:</span> Premium TMT Steel by PSK Group
+                <span style={{ color: '#003366' }}>PSKTMT:</span> Premium TMT Steel by PSK Group
               </h1>
             </Parallax>
             <Parallax translateY={[0, -10]} opacity={[1, 0.8]} startScroll={100}>

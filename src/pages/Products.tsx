@@ -17,7 +17,6 @@ import { ArrowDown, ArrowUp, Phone, Mail } from 'lucide-react';
 const Products = () => {
   const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' } | null>(null);
   
-  // Price list data
   const priceListData = [
     { id: 1, size: '8 mm', price: '₹75' },
     { id: 2, size: '10 mm', price: '₹78' },
@@ -36,7 +35,6 @@ const Products = () => {
   if (sortConfig !== null) {
     sortedData.sort((a, b) => {
       if (sortConfig.key === 'size') {
-        // Extract the numeric part for size comparison
         const sizeA = parseInt(a[sortConfig.key].split(' ')[0]);
         const sizeB = parseInt(b[sortConfig.key].split(' ')[0]);
         
@@ -74,12 +72,11 @@ const Products = () => {
 
   return (
     <PageLayout>
-      {/* Hero Section with Parallax - update banner image if needed */}
       <section className="bg-neutral-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-30">
           <img 
-            src="https://images.unsplash.com/photo-1494891848038-7bd202a2afeb?auto=format&fit=crop&q=80" 
-            alt="TMT bar stacks" 
+            src="/lovable-uploads/21a40637-d7fb-47c4-9f5c-147467ef18cc.png" 
+            alt="TMT steel manufacturing rolling process" 
             className="w-full h-full object-cover"
           />
         </div>
@@ -98,14 +95,14 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Price List Section */}
       <section>
         <div className="container-custom">
           <SectionHeader 
             title="TMT Bar Price List"
             subtitle="Current prices for PSKTMT reinforcement steel bars (TMT600+SD Grade)"
+            centered={true}
+            className="mb-8"
           />
-          
           <div className="bg-white p-4 md:p-8 rounded-lg shadow-card overflow-x-auto">
             <div className="mb-6">
               <h3 className="text-xl font-bold" style={{ color: "#003366" }}>Steel Price List</h3>
@@ -145,7 +142,6 @@ const Products = () => {
             </Table>
           </div>
           
-          {/* Information Box */}
           <div className="mt-10 bg-[#f2f7fc] p-6 rounded-lg border border-[#d1e2f2]">
             <h3 className="text-xl font-bold" style={{ color: "#003366" }}>Important Information</h3>
             <ul className="space-y-2 text-neutral-700">
@@ -174,7 +170,6 @@ const Products = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
       <section className="bg-pskaccent">
         <div className="container-custom">
           <SectionHeader 
@@ -206,7 +201,6 @@ const Products = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="bg-[#003366] text-white">
         <div className="container-custom py-16 md:py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
