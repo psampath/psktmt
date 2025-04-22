@@ -44,19 +44,19 @@ const About = () => {
 
   return (
     <PageLayout>
-      {/* Hero Section */}
+      {/* Hero Section - update to new banner image */}
       <section className="bg-neutral-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <img 
-            src="https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace?auto=format&fit=crop&q=80" 
-            alt="Steel production line" 
+            src="/lovable-uploads/f7c07b28-6d28-4bee-ade1-035e72409caf.png"
+            alt="TMT rods worker inspection"
             className="w-full h-full object-cover"
           />
         </div>
         <div className="container-custom py-20 md:py-32 relative z-10">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
-              About <span className="text-gradient-primary">PSKTMT</span>
+              About <span style={{ color: '#003366', background: 'rgba(255,255,255,0.9)', borderRadius: '4px', padding: '0 12px 0 6px' }}>PSKTMT</span>
             </h1>
             <p className="text-xl text-neutral-200 animate-slide-in">
               Building India's future with steel that lasts generations

@@ -1,3 +1,4 @@
+
 import { Award, Clipboard, Star, Truck, Building2, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageLayout from '@/components/layout/PageLayout';
@@ -14,26 +15,41 @@ const Index = () => {
 
   return (
     <PageLayout>
-      {/* Hero Section with Parallax */}
+      {/* Hero Section with Parallax - updated with relevant manufacturing image */}
       <section className="bg-neutral-900 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-30">
-          <div ref={heroRef}>
+        <div className="absolute inset-0">
+          <div ref={heroRef} className="w-full h-full bg-black/50">
+            {/* Manufacturing process image with worker */}
             <img 
-              src="/lovable-uploads/edacb921-d3d0-40b1-95f5-0d7bc9e82f18.png"
-              alt="Steel manufacturing process with worker and molten steel" 
+              src="/lovable-uploads/46aac0e8-f847-41cc-94a0-b6af8de3dfa3.png"
+              alt="TMT steel manufacturing process with worker monitoring molten steel"
               className="w-full h-full object-cover"
+              style={{ mixBlendMode: 'darken' }}
             />
+            <div className="absolute inset-0 bg-black opacity-50 pointer-events-none" />
           </div>
         </div>
         <div className="container-custom py-20 md:py-32 relative z-10">
           <div className="max-w-3xl">
             <Parallax translateY={[0, -15]} opacity={[1, 0.8]}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                <span style={{ color: '#003366' }}>PSKTMT:</span> Premium TMT Steel by PSK Group
+                {/* PSKTMT emphasized for visibility */}
+                <span
+                  style={{
+                    color: '#003366',
+                    backgroundColor: 'rgba(255,255,255,0.80)',
+                    padding: '4px 16px',
+                    borderRadius: '8px',
+                    boxShadow: '0 1px 8px rgba(0,0,0,0.10)'
+                  }}
+                >
+                  PSKTMT:
+                </span>{' '}
+                Premium TMT Steel by PSK Group
               </h1>
             </Parallax>
             <Parallax translateY={[0, -10]} opacity={[1, 0.8]} startScroll={100}>
-              <p className="text-xl text-neutral-200 mb-8">
+              <p className="text-xl text-neutral-200 mb-8 shadow-text bg-black/30 rounded p-2 inline-block">
                 Strength Built on Trust: Building Tomorrow's Foundations with Quality Steel Solutions
               </p>
             </Parallax>
@@ -47,7 +63,8 @@ const Index = () => {
                 <Link to="/contact">
                   <Button
                     variant="outline"
-                    className="border-[#003366] text-[#003366] hover:bg-[#003366] hover:text-white px-8 py-6 text-lg"
+                    className="border-[#003366] px-8 py-6 text-lg"
+                    style={{ color: '#003366' }} // Ensured color is always #003366
                   >
                     Get a Quote
                   </Button>
@@ -184,7 +201,11 @@ const Index = () => {
               </Button>
             </Link>
             <Link to="/contact">
-              <Button variant="outline" className="px-8 py-6 text-lg border-white text-white hover:bg-white hover:text-[#003366]">
+              <Button
+                variant="outline"
+                className="px-8 py-6 text-lg border-white"
+                style={{ color: "#003366", backgroundColor: "#ffffff", borderColor: "#003366" }}
+              >
                 Contact Our Team
               </Button>
             </Link>
@@ -230,3 +251,4 @@ const Index = () => {
 };
 
 export default Index;
+
