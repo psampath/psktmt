@@ -1,6 +1,7 @@
 import PageLayout from '@/components/layout/PageLayout';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { Award, CheckCircle, Target, Users, Book } from 'lucide-react';
+import PskTmtBanner from '@/components/ui/PskTmtBanner';
 
 const About = () => {
   const values = [
@@ -67,6 +68,8 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      <PskTmtBanner />
 
       <section>
         <div className="container-custom">
