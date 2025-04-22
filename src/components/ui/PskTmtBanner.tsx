@@ -15,7 +15,7 @@ const features = [
 
 // The icons are visually embedded in your supplied image, so this grid textually labels them for accessibility.
 const PskTmtBanner = () => (
-  <section className="relative py-12 md:py-20 bg-white">
+  <section className="relative py-6 md:py-10 bg-white">
     <div className="container-custom flex flex-col items-center">
       <img 
         src="/lovable-uploads/e2c6bd44-861f-409a-a1a0-90ce3785daa1.png"
