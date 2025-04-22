@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import PageLayout from '@/components/layout/PageLayout';
 import StatCard from '@/components/ui/StatCard';
@@ -19,8 +18,8 @@ const Index = () => {
         <div className="absolute inset-0">
           <div ref={heroRef} className="w-full h-full bg-black/50">
             <img 
-              src="/lovable-uploads/46aac0e8-f847-41cc-94a0-b6af8de3dfa3.png"
-              alt="TMT steel manufacturing process with worker monitoring molten steel"
+              src="/lovable-uploads/a8f9e3cf-01bf-47e5-9150-65592caecc4a.png"
+              alt="Steel manufacturing process with industrial machinery and molten metal"
               className="w-full h-full object-cover"
               style={{ mixBlendMode: 'darken' }}
             />
