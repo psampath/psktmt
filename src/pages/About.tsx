@@ -71,6 +71,24 @@ const About = () => {
 
       <PskTmtBanner />
 
+      <section className="py-8 bg-white flex justify-center">
+        <div className="container-custom">
+          <div className="w-full flex flex-col items-center">
+            <img
+              src="/lovable-uploads/c7b912a7-7082-4578-a9d1-077bf3e651f2.png"
+              alt="Accreditations and Approvals: BIS ISI, IS 1786, Make in India"
+              className="max-w-2xl w-full h-auto mb-2"
+              style={{
+                objectFit: "contain",
+                background: "white",
+                borderRadius: 8,
+                boxShadow: "0 1px 10px rgba(0,0,0,0.06)"
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
       <section>
         <div className="container-custom">
           <SectionHeader 
