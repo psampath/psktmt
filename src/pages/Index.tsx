@@ -6,24 +6,38 @@ import SectionHeader from '@/components/ui/SectionHeader';
 import TestimonialCard from '@/components/ui/TestimonialCard';
 import { Link } from 'react-router-dom';
 import { Parallax } from 'react-scroll-parallax';
-import { useRef } from 'react';
-import { Award, Building2, ShieldCheck, Star, Truck, Clipboard as ClipboardIcon } from 'lucide-react';
+import { useRef, useEffect, useState } from 'react';
+import { Award, Building2, ShieldCheck, Star, Truck, ClipboardIcon } from 'lucide-react';
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    // Preload the image to ensure it's displayed
+    const img = new Image();
+    img.src = "/lovable-uploads/a8f9e3cf-01bf-47e5-9150-65592caecc4a.png";
+    img.onload = () => setImageLoaded(true);
+    img.onerror = (e) => console.error("Error loading hero image:", e);
+  }, []);
 
   return (
     <PageLayout>
-      <section className="bg-neutral-900 text-white relative overflow-hidden">
+      <section className="bg-neutral-900 text-white relative overflow-hidden min-h-[600px]">
         <div className="absolute inset-0">
           <div ref={heroRef} className="w-full h-full bg-black/50">
+            {!imageLoaded && (
+              <div className="w-full h-full flex items-center justify-center">
+                <div className="text-white">Loading banner image...</div>
+              </div>
+            )}
             <img 
               src="/lovable-uploads/a8f9e3cf-01bf-47e5-9150-65592caecc4a.png"
               alt="Steel manufacturing process with industrial machinery and molten metal"
-              className="w-full h-full object-cover"
-              style={{ mixBlendMode: 'darken' }}
+              className={`w-full h-full object-cover ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+              style={{ mixBlendMode: 'normal' }}
             />
-            <div className="absolute inset-0 bg-black opacity-50 pointer-events-none" />
+            <div className="absolute inset-0 bg-black opacity-40 pointer-events-none" />
           </div>
         </div>
         <div className="container-custom py-20 md:py-32 relative z-10">
