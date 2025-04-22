@@ -71,13 +71,13 @@ const About = () => {
 
       <PskTmtBanner />
 
-      <section className="py-8 bg-white flex justify-center">
+      <section className="bg-white flex justify-center py-3">
         <div className="container-custom">
           <div className="w-full flex flex-col items-center">
             <img
               src="/lovable-uploads/c7b912a7-7082-4578-a9d1-077bf3e651f2.png"
               alt="Accreditations and Approvals: BIS ISI, IS 1786, Make in India"
-              className="max-w-2xl w-full h-auto mb-2"
+              className="max-w-xl w-full h-auto mb-1"
               style={{
                 objectFit: "contain",
                 background: "white",
