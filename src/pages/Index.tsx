@@ -8,6 +8,7 @@ import TestimonialCard from '@/components/ui/TestimonialCard';
 import { Link } from 'react-router-dom';
 import { Parallax } from 'react-scroll-parallax';
 import { useRef } from 'react';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -19,8 +20,8 @@ const Index = () => {
         <div className="absolute inset-0 opacity-30">
           <div ref={heroRef}>
             <img 
-              src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80"
-              alt="Steel construction" 
+              src="https://images.unsplash.com/photo-1460574283810-2aab119d8511?auto=format&fit=crop&q=80"
+              alt="Steel factory" 
               className="w-full h-full object-cover"
             />
           </div>
@@ -29,7 +30,7 @@ const Index = () => {
           <div className="max-w-3xl">
             <Parallax translateY={[0, -15]} opacity={[1, 0.8]}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                <span className="text-gradient-primary">PSKTMT:</span> Premium TMT Bars for a Stronger Future
+                <span className="text-gradient-primary">PSKTMT:</span> Premium TMT Steel by PSK Group
               </h1>
             </Parallax>
             <Parallax translateY={[0, -10]} opacity={[1, 0.8]} startScroll={100}>
@@ -40,12 +41,12 @@ const Index = () => {
             <Parallax translateY={[0, -5]} startScroll={200}>
               <div className="flex flex-wrap gap-4">
                 <Link to="/products">
-                  <Button className="bg-psktmt-500 hover:bg-psktmt-600 px-8 py-6 text-lg">
+                  <Button className="bg-[#003366] hover:bg-[#002244] px-8 py-6 text-lg text-white">
                     Explore Pricing
                   </Button>
                 </Link>
                 <Link to="/contact">
-                  <Button variant="outline" className="border-white text-black hover:bg-white hover:text-[#003366] px-8 py-6 text-lg">
+                  <Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#003366] px-8 py-6 text-lg">
                     Get a Quote
                   </Button>
                 </Link>
@@ -55,15 +56,83 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Image Carousel */}
+      <section className="py-12 bg-white">
+        <div className="container-custom">
+          <Carousel 
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full max-w-6xl mx-auto"
+          >
+            <CarouselContent>
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                <div className="p-1">
+                  <div className="overflow-hidden rounded-lg">
+                    <img 
+                      src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80" 
+                      alt="TMT Steel Production" 
+                      className="w-full aspect-video object-cover transition-transform hover:scale-105"
+                    />
+                  </div>
+                  <h3 className="mt-3 text-lg font-medium text-neutral-800">TMT Bars Production</h3>
+                </div>
+              </CarouselItem>
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                <div className="p-1">
+                  <div className="overflow-hidden rounded-lg">
+                    <img 
+                      src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&q=80" 
+                      alt="Steel Factory" 
+                      className="w-full aspect-video object-cover transition-transform hover:scale-105"
+                    />
+                  </div>
+                  <h3 className="mt-3 text-lg font-medium text-neutral-800">Modern Manufacturing</h3>
+                </div>
+              </CarouselItem>
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                <div className="p-1">
+                  <div className="overflow-hidden rounded-lg">
+                    <img 
+                      src="https://images.unsplash.com/photo-1496307653780-42ee777d4833?auto=format&fit=crop&q=80" 
+                      alt="Quality Testing" 
+                      className="w-full aspect-video object-cover transition-transform hover:scale-105"
+                    />
+                  </div>
+                  <h3 className="mt-3 text-lg font-medium text-neutral-800">Quality Testing</h3>
+                </div>
+              </CarouselItem>
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                <div className="p-1">
+                  <div className="overflow-hidden rounded-lg">
+                    <img 
+                      src="https://images.unsplash.com/photo-1431576901776-e539bd916ba2?auto=format&fit=crop&q=80" 
+                      alt="Steel Infrastructure" 
+                      className="w-full aspect-video object-cover transition-transform hover:scale-105"
+                    />
+                  </div>
+                  <h3 className="mt-3 text-lg font-medium text-neutral-800">Building Strong Foundations</h3>
+                </div>
+              </CarouselItem>
+            </CarouselContent>
+            <div className="mt-4 flex justify-center gap-2">
+              <CarouselPrevious className="relative inset-0 translate-y-0 bg-[#003366] text-white hover:bg-[#002244] hover:text-white" />
+              <CarouselNext className="relative inset-0 translate-y-0 bg-[#003366] text-white hover:bg-[#002244] hover:text-white" />
+            </div>
+          </Carousel>
+        </div>
+      </section>
+
       {/* PSK Group Introduction */}
       <section className="bg-white py-16">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">Backed by PSK Group</h2>
             <p className="text-lg text-neutral-700 mb-8">
-              PSKTMT is a proud venture of PSK Group, a trusted name with over 50 years of excellence in delivering quality and innovation across multiple industries.
+              PSKTMT, a PSK Group venture, delivers high-quality TMT steel, backed by 50+ years of excellence in delivering quality and innovation across multiple industries.
             </p>
-            <Link to="/about" className="text-psktmt-500 hover:text-psktmt-600 font-semibold flex items-center justify-center">
+            <Link to="/about" className="text-[#003366] hover:text-[#002244] font-semibold flex items-center justify-center">
               Learn More About Our Legacy
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -162,14 +231,11 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Product Teaser */}
-
-
       {/* CTA Section with Parallax Background */}
       <section className="relative overflow-hidden py-24">
         <div className="absolute inset-0 z-0">
           <Parallax translateY={[-20, 20]} className="h-full">
-            <div className="bg-gradient-primary w-full h-[120%]"></div>
+            <div className="bg-gradient-to-r from-[#003366] to-[#00A896] w-full h-[120%]"></div>
           </Parallax>
         </div>
         <div className="container-custom text-center text-white relative z-10">
@@ -179,12 +245,12 @@ const Index = () => {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/products">
-              <Button variant="secondary" className="px-8 py-6 text-lg bg-white text-psktmt-500 hover:bg-neutral-100">
+              <Button variant="secondary" className="px-8 py-6 text-lg bg-white text-[#003366] hover:bg-neutral-100">
                 View Pricing
               </Button>
             </Link>
             <Link to="/contact">
-              <Button variant="outline" className="px-8 py-6 text-lg border-white text-white hover:bg-white hover:text-psktmt-500">
+              <Button variant="outline" className="px-8 py-6 text-lg border-white text-white hover:bg-white hover:text-[#003366]">
                 Contact Our Team
               </Button>
             </Link>

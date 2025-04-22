@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-// Remove the import that's causing the error
-// import PskTmtLogo from '@/assets/images/psk-tmt-logo.png';
-
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

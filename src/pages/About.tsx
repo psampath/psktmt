@@ -1,3 +1,4 @@
+
 import PageLayout from '@/components/layout/PageLayout';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { Award, CheckCircle, Target, Users, Book } from 'lucide-react';
@@ -5,24 +6,39 @@ import { Award, CheckCircle, Target, Users, Book } from 'lucide-react';
 const About = () => {
   const values = [
     {
-      icon: <CheckCircle size={48} className="text-psktmt-500" />,
+      icon: <CheckCircle size={48} className="text-[#003366]" />,
       title: 'Quality',
       description: 'We maintain the highest standards in our materials and processes, ensuring every product exceeds industry benchmarks.'
     },
     {
-      icon: <Users size={48} className="text-psktmt-500" />,
+      icon: <Users size={48} className="text-[#003366]" />,
       title: 'Customer Focus',
       description: "We prioritize understanding and meeting our customers' needs with responsive service and tailored solutions."
     },
     {
-      icon: <Award size={48} className="text-psktmt-500" />,
+      icon: <Award size={48} className="text-[#003366]" />,
       title: 'Integrity',
       description: 'We conduct business with honesty, transparency, and ethical practices at every level of our operation.'
     },
     {
-      icon: <Book size={48} className="text-psktmt-500" />,
+      icon: <Book size={48} className="text-[#003366]" />,
       title: 'Innovation',
       description: 'We continuously seek advancements in steel manufacturing to deliver products that meet evolving industry needs.'
+    }
+  ];
+
+  const leaders = [
+    {
+      name: "Ravi Sharma",
+      role: "CEO",
+      bio: "With 20 years in steel manufacturing, Ravi leads PSKTMT's vision.",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80"
+    },
+    {
+      name: "Anita Desai",
+      role: "COO",
+      bio: "Anita oversees operations with a focus on quality and efficiency.",
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80"
     }
   ];
 
@@ -32,8 +48,8 @@ const About = () => {
       <section className="bg-neutral-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <img 
-            src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&q=80" 
-            alt="Steel construction" 
+            src="https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace?auto=format&fit=crop&q=80" 
+            alt="Steel production line" 
             className="w-full h-full object-cover"
           />
         </div>
@@ -72,7 +88,7 @@ const About = () => {
             </div>
             <div className="order-1 lg:order-2">
               <img 
-                src="https://images.unsplash.com/photo-1460574283810-2aab119d8511?auto=format&fit=crop&q=80" 
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80" 
                 alt="Modern steel factory" 
                 className="rounded-lg shadow-lg w-full h-auto"
               />
@@ -90,7 +106,7 @@ const About = () => {
           />
           
           <div className="mb-16 bg-white p-8 rounded-lg shadow-card text-center">
-            <Target size={64} className="text-psktmt-500 mx-auto mb-4" />
+            <Target size={64} className="text-[#003366] mx-auto mb-4" />
             <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
             <p className="text-xl text-neutral-700 max-w-3xl mx-auto">
               "To be India's most trusted steel brand, known for quality, innovation, and customer satisfaction, while contributing to the nation's infrastructure development."
@@ -141,7 +157,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team Section (Placeholder) */}
+      {/* Leadership Team Section */}
       <section className="bg-neutral-100">
         <div className="container-custom">
           <SectionHeader 
@@ -149,10 +165,23 @@ const About = () => {
             subtitle="Meet the experts behind PSKTMT's success"
           />
           
-          <div className="text-center py-12">
-            <p className="text-xl text-neutral-700">
-              Our leadership team profiles will be coming soon.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {leaders.map((leader, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-card overflow-hidden">
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img 
+                    src={leader.image} 
+                    alt={leader.name} 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6 border-t-4 border-[#003366]">
+                  <h3 className="text-xl font-bold text-[#003366]">{leader.name}</h3>
+                  <p className="text-neutral-500 font-medium mb-3">{leader.role}</p>
+                  <p className="text-neutral-700">{leader.bio}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

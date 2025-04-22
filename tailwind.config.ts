@@ -54,16 +54,16 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				psktmt: {
-					50: '#e6f1ff',
-					100: '#cce3ff',
-					200: '#99c8ff',
-					300: '#66acff', 
-					400: '#3391ff',
-					500: '#0075FF', // Primary blue from PSK Group
-					600: '#005ecc',
-					700: '#004799',
-					800: '#002f66',
-					900: '#001833',
+					50: '#e6ebf0',
+					100: '#ccd8e0',
+					200: '#99b1c2',
+					300: '#668aa3', 
+					400: '#336485',
+					500: '#003366', // Primary PSK Group color
+					600: '#002952',
+					700: '#001f3e',
+					800: '#00152a',
+					900: '#000a15',
 				},
 				success: '#00A896', // PSK accent color
 				neutral: {
