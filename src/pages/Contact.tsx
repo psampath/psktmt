@@ -17,7 +17,7 @@ const Contact = () => {
         <div className="container-custom py-20 md:py-32 relative z-10">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
-              Get In <span className="text-gradient-primary">Touch</span>
+              Get In Touch
             </h1>
             <p className="text-xl text-neutral-200 animate-slide-in">
               We're here to answer your questions and help you find the right steel solutions
@@ -39,8 +39,8 @@ const Contact = () => {
                 </div>
                 <h3 className="font-semibold text-lg mb-2">Our Office</h3>
                 <p className="text-neutral-600 text-center">
-                  123 Steel Road<br />
-                  Hyderabad, India
+                2nd Floor, Bizness Square, Jubilee Enclave,<br />
+                HITEC City, Hyderabad, Telangana 500081
                 </p>
               </div>
               
@@ -50,8 +50,8 @@ const Contact = () => {
                 </div>
                 <h3 className="font-semibold text-lg mb-2">Phone</h3>
                 <p className="text-neutral-600 text-center">
-                  +91 123-456-7890<br />
-                  +91 022-12345678
+                  +91 91333 83303<br />
+                  +91 91333 83358
                 </p>
               </div>
               
@@ -61,8 +61,7 @@ const Contact = () => {
                 </div>
                 <h3 className="font-semibold text-lg mb-2">Email</h3>
                 <p className="text-neutral-600 text-center">
-                  info@psktmt.com<br />
-                  sales@psktmt.com
+                  connect@thepskgroup.com
                 </p>
               </div>
             </div>
@@ -71,16 +70,8 @@ const Contact = () => {
               <h3 className="font-semibold text-xl mb-6 text-[#003366]">Business Hours</h3>
               <div className="max-w-md mx-auto space-y-2 text-neutral-600">
                 <div className="flex justify-between">
-                  <span>Monday - Friday:</span>
-                  <span>9:00 AM - 6:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Saturday:</span>
-                  <span>10:00 AM - 4:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Sunday:</span>
-                  <span>Closed</span>
+                  <span>Monday - Sunday:</span>
+                  <span>9:00 AM - 7:00 PM</span>
                 </div>
               </div>
             </div>

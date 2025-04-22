@@ -23,19 +23,6 @@ const PskTmtBanner = () => (
         className="w-full max-w-3xl mx-auto mb-8 md:mb-12 rounded-lg shadow-card"
         style={{ background: "white" }}
       />
-
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8 mt-4 w-full max-w-5xl">
-        {features.map((feature, idx) => (
-          <div
-            key={idx}
-            className="flex flex-col items-center text-center"
-          >
-            {/* Placeholder for visual alignment with the icons in the image above */}
-            <div className="w-16 h-16 mb-2 rounded-full bg-psktmt-100 flex items-center justify-center border-2 border-psktmt-500" />
-            <span className="text-xs md:text-sm font-semibold text-psktmt-500 uppercase tracking-wide">{feature.label}</span>
-          </div>
-        ))}
-      </div>
     </div>
   </section>
 );

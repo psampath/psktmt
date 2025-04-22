@@ -107,7 +107,7 @@ const Products = () => {
         <div className="container-custom">
           <SectionHeader 
             title="TMT Bar Price List"
-            subtitle="Current prices for PSKTMT reinforcement steel bars (TMT600+SD Grade)"
+            subtitle="Current prices for PSKTMT reinforcement steel bars (TMT600+ SD Grade)"
             centered={true}
             className="mb-8"
           />
@@ -187,8 +187,8 @@ const Products = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-card">
-              <h4 className="text-lg font-bold text-[#003366] mb-3">What does TMT600+SD mean?</h4>
-              <p className="text-neutral-600">TMT600+SD indicates the yield strength of steel in N/mm². The SD designation offers additional ductility properties, making it ideal for earthquake-prone areas.</p>
+              <h4 className="text-lg font-bold text-[#003366] mb-3">What does TMT600+ SD mean?</h4>
+              <p className="text-neutral-600">TMT600+ SD indicates the yield strength of steel in N/mm². The SD designation offers additional ductility properties, making it ideal for earthquake-prone areas.</p>
             </div>
             
             <div className="bg-white p-6 rounded-lg shadow-card">

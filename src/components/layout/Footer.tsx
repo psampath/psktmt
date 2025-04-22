@@ -33,16 +33,14 @@ const Footer = () => {
               Premium TMT Bars for a Stronger Future. Building Tomorrow's Foundations with Quality Steel.
             </p>
             <div className="flex gap-4">
-              <a href="#" aria-label="Facebook" className="hover:text-psktmt-500 transition-colors">
+              <a href="https://www.facebook.com/pskbuildingsolutionss/" aria-label="Facebook" className="hover:text-psktmt-500 transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="#" aria-label="Twitter" className="hover:text-psktmt-500 transition-colors">
-                <Twitter size={20} />
-              </a>
-              <a href="#" aria-label="Instagram" className="hover:text-psktmt-500 transition-colors">
+            
+              <a href="https://www.instagram.com/thepskgroup/" aria-label="Instagram" className="hover:text-psktmt-500 transition-colors">
                 <Instagram size={20} />
               </a>
-              <a href="#" aria-label="LinkedIn" className="hover:text-psktmt-500 transition-colors">
+              <a href="https://www.linkedin.com/company/thepskgroup/" aria-label="LinkedIn" className="hover:text-psktmt-500 transition-colors">
                 <Linkedin size={20} />
               </a>
             </div>
@@ -68,9 +66,9 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/admin" className="text-neutral-300 hover:text-psktmt-500 transition-colors">
+                {/* <Link to="/admin" className="text-neutral-300 hover:text-psktmt-500 transition-colors">
                   Admin Login
-                </Link>
+                </Link> */}
               </li>
             </ul>
           </div>
@@ -88,14 +86,20 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <PhoneCall className="text-psktmt-500" size={18} />
-                <a href="tel:+919876543210" className="text-neutral-300 hover:text-psktmt-500 transition-colors">
-                  +91 9876543210
-                </a>
+                <div className="flex flex-col">
+                  <a href="tel:+919133383303" className="text-neutral-300 hover:text-psktmt-500 transition-colors">
+                    +91 91333 83303
+                  </a>
+                  <a href="tel:+919133383358" className="text-neutral-300 hover:text-psktmt-500 transition-colors">
+                    +91 91333 83358
+                  </a>
+                </div>
               </li>
+                
               <li className="flex items-center gap-3">
                 <Mail className="text-psktmt-500" size={18} />
                 <a href="mailto:info@psktmt.com" className="text-neutral-300 hover:text-psktmt-500 transition-colors">
-                  info@psktmt.com
+                  connect@thepskgroup.com
                 </a>
               </li>
             </ul>
@@ -115,14 +119,6 @@ const Footer = () => {
         <div className="border-t border-neutral-600 pt-8">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between text-neutral-400">
             <p>© {currentYear} PSKTMT - A PSK Group Venture. All rights reserved.</p>
-            <div className="flex gap-6">
-              <Link to="/privacy" className="hover:text-psktmt-500 transition-colors">
-                Privacy Policy
-              </Link>
-              <Link to="/terms" className="hover:text-psktmt-500 transition-colors">
-                Terms of Service
-              </Link>
-            </div>
           </div>
         </div>
       </div>

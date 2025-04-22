@@ -16,7 +16,7 @@ const Index = () => {
   useEffect(() => {
     // Preload the image to ensure it's displayed
     const img = new Image();
-    img.src = "/lovable-uploads/a8f9e3cf-01bf-47e5-9150-65592caecc4a.png";
+    img.src = "/lovable-uploads/banner.jpeg";
     img.onload = () => setImageLoaded(true);
     img.onerror = (e) => console.error("Error loading hero image:", e);
   }, []);
