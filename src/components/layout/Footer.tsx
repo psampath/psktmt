@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, PhoneCall, MapPin } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -55,11 +54,6 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/manufacturing" className="text-neutral-300 hover:text-psktmt-500 transition-colors">
-                  Manufacturing
-                </Link>
-              </li>
-              <li>
                 <Link to="/contact" className="text-neutral-300 hover:text-psktmt-500 transition-colors">
                   Contact Us
                 </Link>
@@ -96,24 +90,6 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div>
-            <h3 className="text-xl font-bold mb-6">Newsletter</h3>
-            <p className="text-neutral-300 mb-4">
-              Subscribe to our newsletter for updates and promotions.
-            </p>
-            <div className="flex gap-2">
-              <Input
-                type="email"
-                placeholder="Your Email"
-                className="bg-neutral-600 border-neutral-500 text-white"
-              />
-              <Button className="bg-psktmt-500 hover:bg-psktmt-600">
-                Subscribe
-              </Button>
-            </div>
           </div>
         </div>
 

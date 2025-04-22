@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import PageLayout from '@/components/layout/PageLayout';
 import SectionHeader from '@/components/ui/SectionHeader';
@@ -75,7 +74,7 @@ const Products = () => {
 
   return (
     <PageLayout>
-      {/* Hero Section with Parallax */}
+      {/* Hero Section with Parallax - update banner image if needed */}
       <section className="bg-neutral-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-30">
           <img 
@@ -87,7 +86,7 @@ const Products = () => {
         <div className="container-custom py-20 md:py-24 relative z-10">
           <Parallax translateY={[0, -15]} opacity={[1, 0.8]}>
             <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: "#003366" }}>
                 PSKTMT <span className="text-gradient-primary">Price List</span>
               </h1>
               <p className="text-xl text-neutral-200">
@@ -103,13 +102,13 @@ const Products = () => {
       <section>
         <div className="container-custom">
           <SectionHeader 
-            title="TMT Bar Price List" 
+            title={<span style={{ color: '#003366' }}>TMT Bar Price List</span>}
             subtitle="Current prices for PSKTMT reinforcement steel bars (TMT600+SD Grade)"
           />
           
           <div className="bg-white p-4 md:p-8 rounded-lg shadow-card overflow-x-auto">
             <div className="mb-6">
-              <h3 className="text-xl font-bold text-[#003366]">Steel Price List</h3>
+              <h3 className="text-xl font-bold" style={{ color: "#003366" }}>Steel Price List</h3>
               <p className="text-neutral-600">Effective from April 17, 2025</p>
             </div>
             
@@ -121,7 +120,7 @@ const Products = () => {
                     onClick={() => requestSort('size')} 
                     className="cursor-pointer hover:bg-[#e5eff8] transition-colors"
                   >
-                    <div className="flex items-center">
+                    <div className="flex items-center" style={{ color: "#003366" }}>
                       Size (Diameter) {getSortIcon('size')}
                     </div>
                   </TableHead>
@@ -129,7 +128,7 @@ const Products = () => {
                     onClick={() => requestSort('price')}
                     className="cursor-pointer hover:bg-[#e5eff8] transition-colors"
                   >
-                    <div className="flex items-center">
+                    <div className="flex items-center" style={{ color: "#003366" }}>
                       Price per Kg {getSortIcon('price')}
                     </div>
                   </TableHead>
@@ -148,7 +147,7 @@ const Products = () => {
           
           {/* Information Box */}
           <div className="mt-10 bg-[#f2f7fc] p-6 rounded-lg border border-[#d1e2f2]">
-            <h3 className="text-xl font-bold text-[#003366] mb-4">Important Information</h3>
+            <h3 className="text-xl font-bold" style={{ color: "#003366" }}>Important Information</h3>
             <ul className="space-y-2 text-neutral-700">
               <li className="flex items-start gap-2">
                 <span className="text-[#003366] font-bold">•</span>
@@ -228,7 +227,7 @@ const Products = () => {
               </div>
             </div>
             <div className="flex justify-center md:justify-end">
-              <Button variant="secondary" size="lg" className="text-[#003366] bg-white hover:bg-neutral-100">
+              <Button variant="secondary" size="lg" className="text-[#003366] bg-white hover:bg-neutral-100" disabled>
                 Request Quotation
               </Button>
             </div>

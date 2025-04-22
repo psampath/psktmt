@@ -20,8 +20,8 @@ const Index = () => {
         <div className="absolute inset-0 opacity-30">
           <div ref={heroRef}>
             <img 
-              src="https://images.unsplash.com/photo-1460574283810-2aab119d8511?auto=format&fit=crop&q=80"
-              alt="Steel factory" 
+              src="https://images.unsplash.com/photo-1487887235947-a955ef187fcc?auto=format&fit=crop&q=80"
+              alt="Steel manufacturing process" 
               className="w-full h-full object-cover"
             />
           </div>
@@ -46,81 +46,16 @@ const Index = () => {
                   </Button>
                 </Link>
                 <Link to="/contact">
-                  <Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#003366] px-8 py-6 text-lg">
+                  <Button
+                    variant="outline"
+                    className="border-[#003366] text-[#003366] hover:bg-[#003366] hover:text-white px-8 py-6 text-lg"
+                  >
                     Get a Quote
                   </Button>
                 </Link>
               </div>
             </Parallax>
           </div>
-        </div>
-      </section>
-
-      {/* Image Carousel */}
-      <section className="py-12 bg-white">
-        <div className="container-custom">
-          <Carousel 
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full max-w-6xl mx-auto"
-          >
-            <CarouselContent>
-              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                <div className="p-1">
-                  <div className="overflow-hidden rounded-lg">
-                    <img 
-                      src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80" 
-                      alt="TMT Steel Production" 
-                      className="w-full aspect-video object-cover transition-transform hover:scale-105"
-                    />
-                  </div>
-                  <h3 className="mt-3 text-lg font-medium text-neutral-800">TMT Bars Production</h3>
-                </div>
-              </CarouselItem>
-              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                <div className="p-1">
-                  <div className="overflow-hidden rounded-lg">
-                    <img 
-                      src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&q=80" 
-                      alt="Steel Factory" 
-                      className="w-full aspect-video object-cover transition-transform hover:scale-105"
-                    />
-                  </div>
-                  <h3 className="mt-3 text-lg font-medium text-neutral-800">Modern Manufacturing</h3>
-                </div>
-              </CarouselItem>
-              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                <div className="p-1">
-                  <div className="overflow-hidden rounded-lg">
-                    <img 
-                      src="https://images.unsplash.com/photo-1496307653780-42ee777d4833?auto=format&fit=crop&q=80" 
-                      alt="Quality Testing" 
-                      className="w-full aspect-video object-cover transition-transform hover:scale-105"
-                    />
-                  </div>
-                  <h3 className="mt-3 text-lg font-medium text-neutral-800">Quality Testing</h3>
-                </div>
-              </CarouselItem>
-              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                <div className="p-1">
-                  <div className="overflow-hidden rounded-lg">
-                    <img 
-                      src="https://images.unsplash.com/photo-1431576901776-e539bd916ba2?auto=format&fit=crop&q=80" 
-                      alt="Steel Infrastructure" 
-                      className="w-full aspect-video object-cover transition-transform hover:scale-105"
-                    />
-                  </div>
-                  <h3 className="mt-3 text-lg font-medium text-neutral-800">Building Strong Foundations</h3>
-                </div>
-              </CarouselItem>
-            </CarouselContent>
-            <div className="mt-4 flex justify-center gap-2">
-              <CarouselPrevious className="relative inset-0 translate-y-0 bg-[#003366] text-white hover:bg-[#002244] hover:text-white" />
-              <CarouselNext className="relative inset-0 translate-y-0 bg-[#003366] text-white hover:bg-[#002244] hover:text-white" />
-            </div>
-          </Carousel>
         </div>
       </section>
 

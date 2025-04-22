@@ -15,7 +15,7 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Price List', path: '/products' },
-    { name: 'Manufacturing', path: '/manufacturing' },
+    // Manufacturing tab removed as per request
     { name: 'Contact', path: '/contact' },
   ];
 
