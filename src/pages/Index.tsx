@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import PageLayout from '@/components/layout/PageLayout';
 import StatCard from '@/components/ui/StatCard';
@@ -7,6 +8,7 @@ import TestimonialCard from '@/components/ui/TestimonialCard';
 import { Link } from 'react-router-dom';
 import { Parallax } from 'react-scroll-parallax';
 import { useRef } from 'react';
+import { Award, Building2, ShieldCheck, Star, Truck, Clipboard as ClipboardIcon } from 'lucide-react';
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -146,7 +148,7 @@ const Index = () => {
               {
                 title: "Uniform Properties",
                 description: "Consistent quality across all our products ensures reliable performance every time.",
-                icon: <Clipboard size={36} />,
+                icon: <ClipboardIcon size={36} />,
                 delay: 300
               },
               {
