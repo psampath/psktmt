@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, PhoneCall, MapPin } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -19,14 +20,14 @@ const Footer = () => {
                 className="h-8"
               />
               <span
-  style={{
-    color: 'white',
-    backgroundColor: 'rgba(0,51,102,0.80)',
-    padding: '1px 1px 1px 1px',
-    borderRadius: '4px',
-    boxShadow: '0 1px 8px rgba(0,0,0,0.10)'
-  }}
->PSKTMT</span>
+                style={{
+                  color: 'white',
+                  backgroundColor: 'rgba(0,51,102,0.80)',
+                  padding: '1px 1px 1px 1px',
+                  borderRadius: '4px',
+                  boxShadow: '0 1px 8px rgba(0,0,0,0.10)'
+                }}
+              >PSKTMT</span>
             </div>
             <p className="text-neutral-300 mb-6">
               Premium TMT Bars for a Stronger Future. Building Tomorrow's Foundations with Quality Steel.
@@ -58,7 +59,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/products" className="text-neutral-300 hover:text-psktmt-500 transition-colors">
-                  Products
+                  Price List
                 </Link>
               </li>
               <li>
@@ -98,6 +99,16 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
+          </div>
+
+          {/* Accreditations & Approvals */}
+          <div className="flex flex-col items-center lg:items-end justify-center">
+            <img
+              src="/lovable-uploads/8165cf31-29a9-4ccb-bd99-8c22ee3678ba.png"
+              alt="Accreditations and Approvals"
+              className="w-full max-w-xs md:max-w-sm mb-2"
+              style={{ background: "white", borderRadius: 8, boxShadow: "0 1px 10px rgba(0,0,0,0.06)" }}
+            />
           </div>
         </div>
 
