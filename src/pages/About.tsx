@@ -1,4 +1,3 @@
-
 import PageLayout from '@/components/layout/PageLayout';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { Award, CheckCircle, Target, Users, Book } from 'lucide-react';
@@ -44,7 +43,6 @@ const About = () => {
 
   return (
     <PageLayout>
-      {/* Hero Section - update to new banner image */}
       <section className="bg-neutral-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <img 
@@ -56,7 +54,12 @@ const About = () => {
         <div className="container-custom py-20 md:py-32 relative z-10">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
-              About <span style={{ color: '#003366', background: 'rgba(255,255,255,0.9)', borderRadius: '4px', padding: '0 12px 0 6px' }}>PSKTMT</span>
+              About <span style={{ 
+                color: 'white', 
+                background: 'rgba(0,51,102,0.9)', 
+                borderRadius: '4px', 
+                padding: '0 12px 0 6px' 
+              }}>PSKTMT</span>
             </h1>
             <p className="text-xl text-neutral-200 animate-slide-in">
               Building India's future with steel that lasts generations
@@ -65,7 +68,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Our Story Section */}
       <section>
         <div className="container-custom">
           <SectionHeader 
@@ -97,7 +99,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Vision & Values Section */}
       <section className="bg-neutral-100">
         <div className="container-custom">
           <SectionHeader 
@@ -125,7 +126,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Legacy Section */}
       <section>
         <div className="container-custom">
           <SectionHeader 
@@ -157,7 +157,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Leadership Team Section */}
       <section className="bg-neutral-100">
         <div className="container-custom">
           <SectionHeader 

@@ -1,5 +1,3 @@
-
-import { Award, Clipboard, Star, Truck, Building2, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageLayout from '@/components/layout/PageLayout';
 import StatCard from '@/components/ui/StatCard';
@@ -15,11 +13,9 @@ const Index = () => {
 
   return (
     <PageLayout>
-      {/* Hero Section with Parallax - updated with relevant manufacturing image */}
       <section className="bg-neutral-900 text-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div ref={heroRef} className="w-full h-full bg-black/50">
-            {/* Manufacturing process image with worker */}
             <img 
               src="/lovable-uploads/46aac0e8-f847-41cc-94a0-b6af8de3dfa3.png"
               alt="TMT steel manufacturing process with worker monitoring molten steel"
@@ -33,11 +29,10 @@ const Index = () => {
           <div className="max-w-3xl">
             <Parallax translateY={[0, -15]} opacity={[1, 0.8]}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                {/* PSKTMT emphasized for visibility */}
                 <span
                   style={{
-                    color: '#003366',
-                    backgroundColor: 'rgba(255,255,255,0.80)',
+                    color: 'white',
+                    backgroundColor: 'rgba(0,51,102,0.80)',
                     padding: '4px 16px',
                     borderRadius: '8px',
                     boxShadow: '0 1px 8px rgba(0,0,0,0.10)'
@@ -64,7 +59,7 @@ const Index = () => {
                   <Button
                     variant="outline"
                     className="border-[#003366] px-8 py-6 text-lg"
-                    style={{ color: '#003366' }} // Ensured color is always #003366
+                    style={{ color: '#003366' }}
                   >
                     Get a Quote
                   </Button>
@@ -75,7 +70,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* PSK Group Introduction */}
       <section className="bg-white py-16">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto">
@@ -93,7 +87,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Stats Section with Parallax */}
       <section className="bg-pskaccent py-16">
         <div className="container-custom">
           <Parallax translateY={[-10, 10]}>
@@ -123,7 +116,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Features Section with Parallax */}
       <section>
         <div className="container-custom">
           <SectionHeader 
@@ -182,7 +174,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section with Parallax Background */}
       <section className="relative overflow-hidden py-24">
         <div className="absolute inset-0 z-0">
           <Parallax translateY={[-20, 20]} className="h-full">
@@ -213,7 +204,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
       <section>
         <div className="container-custom">
           <SectionHeader 
@@ -251,4 +241,3 @@ const Index = () => {
 };
 
 export default Index;
-
