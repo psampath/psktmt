@@ -102,7 +102,7 @@ const Products = () => {
       <section>
         <div className="container-custom">
           <SectionHeader 
-            title={<span style={{ color: '#003366' }}>TMT Bar Price List</span>}
+            title="TMT Bar Price List"
             subtitle="Current prices for PSKTMT reinforcement steel bars (TMT600+SD Grade)"
           />
           
