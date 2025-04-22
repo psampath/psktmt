@@ -114,7 +114,7 @@ const Products = () => {
           <div className="bg-white p-4 md:p-8 rounded-lg shadow-card overflow-x-auto">
             <div className="mb-6">
               <h3 className="text-xl font-bold" style={{ color: "#003366" }}>Steel Price List</h3>
-              <p className="text-neutral-600">Effective from April 17, 2025</p>
+              <p className="text-neutral-600">Effective from April 23, 2025</p>
             </div>
             
             <Table>
