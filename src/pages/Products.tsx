@@ -220,11 +220,11 @@ const Products = () => {
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <Phone size={20} className="text-white" />
-                  <span>+91 98765 43210</span>
+                  <span>+91 91333 83303</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail size={20} className="text-white" />
-                  <span>sales@psktmt.com</span>
+                  <span>connect@thepskgroup.com</span>
                 </div>
               </div>
             </div>
