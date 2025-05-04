@@ -1,9 +1,10 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { 
   LayoutDashboard, Package, FileText, Users, Settings, LogOut, Edit, 
-  ChevronDown, Search, Bell, User, Menu, X, Image, Plus, ChevronRight
+  ChevronDown, Search, Bell, User, Menu, X, Image, Plus, ChevronRight,
+  Save
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -17,82 +18,96 @@ import {
   DropdownMenuTrigger 
 } from '@/components/ui/dropdown-menu';
 import { toast } from 'sonner';
-
-// Mock product data for the admin panel
-const products = [
-  {
-    id: 'fe-500',
-    name: 'PSKTMT Fe 500',
-    price: '58000',
-    category: 'General',
-    lastUpdated: '2 days ago'
-  },
-  {
-    id: 'fe-500d',
-    name: 'PSKTMT Fe 500D',
-    price: '60500',
-    category: 'Earthquake Resistant',
-    lastUpdated: '1 day ago'
-  },
-  {
-    id: 'fe-550',
-    name: 'PSKTMT Fe 550',
-    price: '62000',
-    category: 'Premium',
-    lastUpdated: '3 days ago'
-  },
-  {
-    id: 'fe-550d',
-    name: 'PSKTMT Fe 550D',
-    price: '64500',
-    category: 'Premium',
-    lastUpdated: '5 days ago'
-  },
-  {
-    id: 'fe-600',
-    name: 'PSKTMT Fe 600',
-    price: '69000',
-    category: 'Specialized',
-    lastUpdated: '1 week ago'
-  },
-  {
-    id: 'crs-fe-500',
-    name: 'PSKTMT CRS Fe 500',
-    price: '63000',
-    category: 'Corrosion Resistant',
-    lastUpdated: '2 weeks ago'
-  }
-];
+import { PriceItem, getPrices, updatePrice, formatPrice, parsePrice } from '@/services/priceService';
 
 const AdminDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
+  const [priceListData, setPriceListData] = useState<PriceItem[]>([]);
+  const [editedPrices, setEditedPrices] = useState<{[key: number]: string}>({});
+  const [errors, setErrors] = useState<{[key: number]: string}>({});
+
+  // Check for authentication and load price data
+  useEffect(() => {
+    const isLoggedIn = sessionStorage.getItem('admin_authenticated');
+    if (!isLoggedIn) {
+      navigate('/admin');
+      return;
+    }
+    
+    // Load price data
+    setPriceListData(getPrices());
+  }, [navigate]);
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
   const handleLogout = () => {
+    sessionStorage.removeItem('admin_authenticated');
     toast.success('Logged out successfully');
     navigate('/admin');
   };
 
-  const handlePriceUpdate = (id: string, newPrice: string) => {
-    toast.success(`Price for ${id} updated to ₹${newPrice} per ton`);
+  const handlePriceChange = (id: number, value: string) => {
+    setEditedPrices(prev => ({ ...prev, [id]: value }));
+    
+    // Validate price (clear error if valid)
+    if (value && !isNaN(parseFloat(value.replace(/[^0-9.]/g, ''))) && parseFloat(value.replace(/[^0-9.]/g, '')) > 0) {
+      setErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[id];
+        return newErrors;
+      });
+    }
   };
 
-  const handleDescriptionEdit = (id: string) => {
-    toast.success(`Redirecting to edit page for ${id}`);
+  const handleSavePrice = (id: number) => {
+    const editedValue = editedPrices[id];
+    
+    // Validate price
+    if (!editedValue || isNaN(parseFloat(editedValue.replace(/[^0-9.]/g, ''))) || parseFloat(editedValue.replace(/[^0-9.]/g, '')) <= 0) {
+      setErrors(prev => ({ 
+        ...prev, 
+        [id]: "Please enter a valid price (must be a positive number)" 
+      }));
+      return;
+    }
+    
+    // Format the price
+    const numericPrice = parseFloat(editedValue.replace(/[^0-9.]/g, ''));
+    const formattedPrice = formatPrice(numericPrice);
+    
+    // Update price in service
+    const success = updatePrice(id, formattedPrice);
+    
+    if (success) {
+      // Update local state with the latest data
+      setPriceListData(getPrices());
+      
+      // Clear edited state for this item
+      setEditedPrices(prev => {
+        const newState = { ...prev };
+        delete newState[id];
+        return newState;
+      });
+      
+      // Show success message
+      toast.success(`Price updated successfully for ${priceListData.find(item => item.id === id)?.size}`);
+    } else {
+      toast.error("Failed to update price. Please try again.");
+    }
   };
 
-  const handleImageUpload = (id: string) => {
-    toast.success(`Image upload interface opened for ${id}`);
+  const handlePriceKeyPress = (e: React.KeyboardEvent, id: number) => {
+    if (e.key === 'Enter') {
+      handleSavePrice(id);
+    }
   };
 
-  const filteredProducts = products.filter(product => 
-    product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    product.category.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredPriceData = priceListData.filter(item => 
+    item.size.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -128,33 +143,24 @@ const AdminDashboard = () => {
               <span>Dashboard</span>
             </Link>
             <Link
-              to="/admin/dashboard"
+              to="/products"
               className="flex items-center space-x-3 px-4 py-3 text-neutral-700 hover:bg-neutral-100 rounded-md"
             >
               <Package size={20} />
-              <span>Products</span>
+              <span>Price List</span>
             </Link>
-            <Link
-              to="/admin/dashboard"
-              className="flex items-center space-x-3 px-4 py-3 text-neutral-700 hover:bg-neutral-100 rounded-md"
-            >
+            <div className="flex items-center space-x-3 px-4 py-3 text-neutral-400 rounded-md">
               <FileText size={20} />
               <span>Content</span>
-            </Link>
-            <Link
-              to="/admin/dashboard"
-              className="flex items-center space-x-3 px-4 py-3 text-neutral-700 hover:bg-neutral-100 rounded-md"
-            >
+            </div>
+            <div className="flex items-center space-x-3 px-4 py-3 text-neutral-400 rounded-md">
               <Users size={20} />
               <span>Team</span>
-            </Link>
-            <Link
-              to="/admin/dashboard"
-              className="flex items-center space-x-3 px-4 py-3 text-neutral-700 hover:bg-neutral-100 rounded-md"
-            >
+            </div>
+            <div className="flex items-center space-x-3 px-4 py-3 text-neutral-400 rounded-md">
               <Settings size={20} />
               <span>Settings</span>
-            </Link>
+            </div>
           </div>
         </nav>
 
@@ -181,7 +187,7 @@ const AdminDashboard = () => {
               >
                 <Menu size={24} />
               </button>
-              <h1 className="text-xl font-bold">Dashboard</h1>
+              <h1 className="text-xl font-bold">Price Management</h1>
             </div>
 
             <div className="flex items-center space-x-4">
@@ -196,12 +202,11 @@ const AdminDashboard = () => {
                 />
               </div>
 
-              <div className="relative">
-                <Button variant="ghost" className="rounded-full w-8 h-8 p-0">
-                  <Bell size={20} />
-                  <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+              <Link to="/products">
+                <Button variant="outline" className="border-psktmt-500 text-psktmt-500">
+                  View Price List
                 </Button>
-              </div>
+              </Link>
 
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -227,61 +232,10 @@ const AdminDashboard = () => {
 
         {/* Main Content */}
         <main className="flex-1 overflow-y-auto p-6">
-          {/* Dashboard Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div className="bg-white p-6 rounded-lg shadow-card">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-neutral-500">Total Products</p>
-                  <h3 className="text-2xl font-bold">6</h3>
-                </div>
-                <div className="bg-psktmt-100 p-3 rounded-full text-psktmt-500">
-                  <Package size={24} />
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-card">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-neutral-500">Recent Updates</p>
-                  <h3 className="text-2xl font-bold">12</h3>
-                </div>
-                <div className="bg-blue-100 p-3 rounded-full text-blue-500">
-                  <Edit size={24} />
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-card">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-neutral-500">Team Members</p>
-                  <h3 className="text-2xl font-bold">5</h3>
-                </div>
-                <div className="bg-amber-100 p-3 rounded-full text-amber-500">
-                  <Users size={24} />
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-card">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-neutral-500">Pending Tasks</p>
-                  <h3 className="text-2xl font-bold">3</h3>
-                </div>
-                <div className="bg-red-100 p-3 rounded-full text-red-500">
-                  <Bell size={24} />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Product Management */}
+          {/* Price Management Section */}
           <div className="bg-white rounded-lg shadow-card mb-8">
             <div className="flex items-center justify-between p-6 border-b">
-              <h2 className="text-xl font-bold">Product Management</h2>
+              <h2 className="text-xl font-bold text-psktmt-500">Price List Management</h2>
               <div className="flex space-x-2">
                 <div className="relative block md:hidden">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400" size={18} />
@@ -293,9 +247,6 @@ const AdminDashboard = () => {
                     className="pl-10 w-40"
                   />
                 </div>
-                <Button className="bg-psktmt-500 hover:bg-psktmt-600">
-                  <Plus size={18} className="mr-2" /> Add Product
-                </Button>
               </div>
             </div>
 
@@ -304,69 +255,57 @@ const AdminDashboard = () => {
                 <thead>
                   <tr className="bg-neutral-50">
                     <th className="py-3 px-6 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
-                      Product Name
+                      TMT BAR SIZE
                     </th>
                     <th className="py-3 px-6 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
-                      Category
+                      PRICE
                     </th>
                     <th className="py-3 px-6 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
-                      Price (₹/ton)
-                    </th>
-                    <th className="py-3 px-6 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
-                      Last Updated
-                    </th>
-                    <th className="py-3 px-6 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
-                      Actions
+                      ACTIONS
                     </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-neutral-200">
-                  {filteredProducts.length > 0 ? (
-                    filteredProducts.map((product) => (
-                      <tr key={product.id} className="hover:bg-neutral-50">
-                        <td className="py-4 px-6 whitespace-nowrap">
-                          <div className="font-medium">{product.name}</div>
-                          <div className="text-xs text-neutral-500">{product.id}</div>
+                  {filteredPriceData.length > 0 ? (
+                    filteredPriceData.map((item) => (
+                      <tr key={item.id} className="hover:bg-neutral-50">
+                        <td className="py-4 px-6 whitespace-nowrap font-medium">
+                          {item.size}
                         </td>
                         <td className="py-4 px-6 whitespace-nowrap">
-                          {product.category}
-                        </td>
-                        <td className="py-4 px-6 whitespace-nowrap">
-                          <div className="flex items-center space-x-2">
-                            <Input 
-                              type="text" 
-                              value={product.price} 
-                              className="w-24" 
-                              onChange={(e) => {/* Would update local state */}}
-                              onBlur={(e) => handlePriceUpdate(product.id, e.target.value)} 
-                            />
+                          <div className="flex flex-col">
+                            <div className="flex items-center space-x-2">
+                              <Input 
+                                type="text" 
+                                value={editedPrices[item.id] !== undefined ? editedPrices[item.id] : item.price.replace('₹', '').replace('/-', '')} 
+                                onChange={(e) => handlePriceChange(item.id, e.target.value)}
+                                onKeyPress={(e) => handlePriceKeyPress(e, item.id)}
+                                className={`w-32 ${errors[item.id] ? 'border-red-500' : ''}`}
+                                aria-label={`Edit price for ${item.size}`}
+                              />
+                            </div>
+                            {errors[item.id] && (
+                              <p className="text-red-500 text-xs mt-1">{errors[item.id]}</p>
+                            )}
                           </div>
                         </td>
                         <td className="py-4 px-6 whitespace-nowrap">
-                          {product.lastUpdated}
-                        </td>
-                        <td className="py-4 px-6 whitespace-nowrap flex space-x-2">
                           <Button 
-                            variant="outline" 
+                            className="bg-psktmt-500 hover:bg-psktmt-600 text-white"
+                            onClick={() => handleSavePrice(item.id)}
+                            disabled={editedPrices[item.id] === undefined}
                             size="sm"
-                            onClick={() => handleDescriptionEdit(product.id)}
                           >
-                            <Edit size={16} />
-                          </Button>
-                          <Button 
-                            variant="outline" 
-                            size="sm"
-                            onClick={() => handleImageUpload(product.id)}
-                          >
-                            <Image size={16} />
+                            <Save size={16} className="mr-1" />
+                            Save
                           </Button>
                         </td>
                       </tr>
                     ))
                   ) : (
                     <tr>
-                      <td colSpan={5} className="py-8 text-center text-neutral-500">
-                        No products found matching your search criteria.
+                      <td colSpan={3} className="py-8 text-center text-neutral-500">
+                        No items found matching your search criteria.
                       </td>
                     </tr>
                   )}
@@ -374,76 +313,34 @@ const AdminDashboard = () => {
               </table>
             </div>
 
-            <div className="p-4 border-t flex items-center justify-between">
+            <div className="p-4 border-t">
               <p className="text-sm text-neutral-500">
-                Showing {filteredProducts.length} out of {products.length} products
+                Note: All prices are displayed in Indian Rupees (₹) and are subject to change. Last updated on April 23, 2025.
               </p>
-              <div className="flex items-center space-x-2">
-                <Button variant="outline" size="sm" disabled>
-                  Previous
-                </Button>
-                <Button variant="outline" size="sm" className="bg-neutral-100">
-                  1
-                </Button>
-                <Button variant="outline" size="sm">
-                  Next
-                </Button>
-              </div>
             </div>
           </div>
 
-          {/* Recent Activity */}
-          <div className="bg-white rounded-lg shadow-card">
-            <div className="flex items-center justify-between p-6 border-b">
-              <h2 className="text-xl font-bold">Recent Activity</h2>
-              <Button variant="ghost" className="text-psktmt-500 hover:text-psktmt-600">
-                View All <ChevronRight size={16} className="ml-1" />
-              </Button>
-            </div>
-            <div className="p-6">
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-blue-100 p-2 rounded-full text-blue-500">
-                    <Edit size={16} />
-                  </div>
-                  <div>
-                    <p className="font-medium">Product price updated</p>
-                    <p className="text-sm text-neutral-500">PSKTMT Fe 500D price updated to ₹60,500 per ton</p>
-                    <p className="text-xs text-neutral-400 mt-1">2 hours ago by Admin</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <div className="bg-psktmt-100 p-2 rounded-full text-psktmt-500">
-                    <Image size={16} />
-                  </div>
-                  <div>
-                    <p className="font-medium">Product image uploaded</p>
-                    <p className="text-sm text-neutral-500">New image added for PSKTMT Fe 550</p>
-                    <p className="text-xs text-neutral-400 mt-1">5 hours ago by Admin</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <div className="bg-amber-100 p-2 rounded-full text-amber-500">
-                    <FileText size={16} />
-                  </div>
-                  <div>
-                    <p className="font-medium">Product description updated</p>
-                    <p className="text-sm text-neutral-500">Description updated for PSKTMT CRS Fe 500</p>
-                    <p className="text-xs text-neutral-400 mt-1">Yesterday by Admin</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <div className="bg-green-100 p-2 rounded-full text-green-500">
-                    <User size={16} />
-                  </div>
-                  <div>
-                    <p className="font-medium">New team member added</p>
-                    <p className="text-sm text-neutral-500">Priya Sharma added as Content Editor</p>
-                    <p className="text-xs text-neutral-400 mt-1">2 days ago by Admin</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* Information Box */}
+          <div className="bg-[#f2f7fc] p-6 rounded-lg border border-[#d1e2f2]">
+            <h3 className="text-xl font-bold" style={{ color: "#003366" }}>Price Management Guidelines</h3>
+            <ul className="space-y-2 text-neutral-700 mt-4">
+              <li className="flex items-start gap-2">
+                <span className="text-[#003366] font-bold">•</span>
+                <span>Enter prices in INR format (e.g., "384" or "384.50")</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#003366] font-bold">•</span>
+                <span>Prices will be automatically formatted to include the ₹ symbol</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#003366] font-bold">•</span>
+                <span>Changes will be reflected immediately on the public Price List page</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#003366] font-bold">•</span>
+                <span>All price updates are backed up automatically</span>
+              </li>
+            </ul>
           </div>
         </main>
       </div>

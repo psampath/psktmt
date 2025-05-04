@@ -1,4 +1,5 @@
-import { useState } from 'react';
+
+import { useState, useEffect } from 'react';
 import PageLayout from '@/components/layout/PageLayout';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { Parallax } from 'react-scroll-parallax';
@@ -13,19 +14,16 @@ import {
 } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { ArrowDown, ArrowUp, Phone, Mail } from 'lucide-react';
+import { PriceItem, getPrices } from '@/services/priceService';
 
 const Products = () => {
   const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' } | null>(null);
+  const [priceListData, setPriceListData] = useState<PriceItem[]>([]);
   
-  const priceListData = [
-    { id: 1, size: '8 mm', price: '₹383/-' },
-    { id: 2, size: '10 mm', price: '₹594/-' },
-    { id: 3, size: '12 mm', price: '₹837/-' },
-    { id: 4, size: '16 mm', price: '₹1497/-' },
-    { id: 5, size: '20 mm', price: '₹2340/-' },
-    { id: 6, size: '25 mm', price: '₹3656/-' },
-    { id: 8, size: '32 mm', price: '₹6132/-' },
-  ];
+  // Load price data on component mount
+  useEffect(() => {
+    setPriceListData(getPrices());
+  }, []);
 
   const sortedData = [...priceListData];
   
@@ -69,6 +67,7 @@ const Products = () => {
 
   return (
     <PageLayout>
+      {/* Hero Section */}
       <section className="bg-neutral-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-30">
           <img 
@@ -103,6 +102,7 @@ const Products = () => {
         </div>
       </section>
 
+      {/* Price List Section */}
       <section>
         <div className="container-custom">
           <SectionHeader 
@@ -150,6 +150,7 @@ const Products = () => {
             </Table>
           </div>
           
+          {/* Additional Information */}
           <div className="mt-10 bg-[#f2f7fc] p-6 rounded-lg border border-[#d1e2f2]">
             <h3 className="text-xl font-bold" style={{ color: "#003366" }}>Important Information</h3>
             <ul className="space-y-2 text-neutral-700">
@@ -178,6 +179,7 @@ const Products = () => {
         </div>
       </section>
 
+      {/* FAQ Section */}
       <section className="bg-pskaccent">
         <div className="container-custom">
           <SectionHeader 
@@ -209,6 +211,7 @@ const Products = () => {
         </div>
       </section>
 
+      {/* CTA Section */}
       <section className="bg-[#003366] text-white">
         <div className="container-custom py-16 md:py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -229,7 +232,7 @@ const Products = () => {
               </div>
             </div>
             <div className="flex justify-center md:justify-end">
-              <Button variant="secondary" size="lg" className="text-[#003366] bg-white hover:bg-neutral-100" disabled>
+              <Button variant="secondary" size="lg" className="text-[#003366] bg-white hover:bg-neutral-100">
                 Request Quotation
               </Button>
             </div>

@@ -1,36 +1,51 @@
 
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { Eye, EyeOff, Lock, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
+
+// In a real application, these should be environment variables
+// For demo purposes only, we're hardcoding them (NOT recommended for production)
+const ADMIN_EMAIL = "admin@psktmt.com";
+const ADMIN_PASSWORD = "admin123"; // In production, this would be hashed
 
 const Admin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [loginError, setLoginError] = useState('');
   const navigate = useNavigate();
+
+  // Check if already authenticated
+  useEffect(() => {
+    const isAuthenticated = sessionStorage.getItem('admin_authenticated');
+    if (isAuthenticated) {
+      navigate('/admin/dashboard');
+    }
+  }, [navigate]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setLoginError('');
     
-    // This is just a mock authentication process
+    // Simple authentication check
     setTimeout(() => {
-      // For demo purposes, accept any login with a valid email format
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      
-      if (emailRegex.test(email) && password.length >= 6) {
+      if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+        // Store authentication in session storage (will be lost when browser is closed)
+        sessionStorage.setItem('admin_authenticated', 'true');
         toast.success('Login successful!');
         navigate('/admin/dashboard');
       } else {
-        toast.error('Invalid credentials. Please try again.');
+        setLoginError('Invalid email or password. Please try again.');
+        toast.error('Login failed. Invalid credentials.');
       }
       
       setIsLoading(false);
-    }, 1500);
+    }, 800); // Slight delay for UX
   };
 
   const togglePasswordVisibility = () => {
@@ -49,6 +64,12 @@ const Admin = () => {
           </div>
 
           <h1 className="text-2xl font-bold text-center mb-6">Admin Login</h1>
+          
+          {loginError && (
+            <div className="bg-red-50 text-red-600 p-3 rounded-md mb-4">
+              {loginError}
+            </div>
+          )}
           
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
@@ -106,12 +127,6 @@ const Admin = () => {
                   Remember me
                 </label>
               </div>
-
-              <div className="text-sm">
-                <a href="#" className="font-medium text-psktmt-500 hover:text-psktmt-600">
-                  Forgot your password?
-                </a>
-              </div>
             </div>
 
             <Button
@@ -123,16 +138,23 @@ const Admin = () => {
             </Button>
           </form>
 
-          <p className="mt-8 text-center text-sm text-neutral-600">
-            This is a secure area. Unauthorized access is prohibited.
-          </p>
+          <div className="mt-6 text-center">
+            <Link to="/" className="text-psktmt-500 hover:underline text-sm">
+              Return to Main Website
+            </Link>
+          </div>
+
+          <div className="mt-8 border-t pt-6">
+            <p className="text-center text-sm text-neutral-600">
+              This is a secure area. Unauthorized access is prohibited.
+            </p>
+            
+            {/* Only for demo purposes - would be removed in production */}
+            <p className="text-center text-xs text-neutral-400 mt-2">
+              Demo credentials: admin@psktmt.com / admin123
+            </p>
+          </div>
         </div>
-        
-        <p className="mt-6 text-center text-sm text-neutral-600">
-          <a href="/" className="font-medium text-psktmt-500 hover:text-psktmt-600">
-            Return to Main Website
-          </a>
-        </p>
       </div>
     </div>
   );
